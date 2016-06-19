@@ -44,8 +44,8 @@ public class MySQLConnector {
             // Teste de conexao
             if (!connection.isClosed()) {
                 //if (connection != null)
-                status = "Conectado com sucesso ao banco de dados!";
-                final ImageIcon icon = new ImageIcon("C:\\Users\\Bernardo\\IdeaProjects\\programacaoModular\\src\\telas\\icons\\Ok1.png");
+                status = "Acesso Ao Sistema Concedido!";
+                final ImageIcon icon = new ImageIcon("C:\\Users\\Bernardo\\Documents\\NetBeansProjects\\programacaoModular\\src\\icons\\Ok1.png");
                 JOptionPane.showMessageDialog(null, status, "Conexao bem sucedida", JOptionPane.INFORMATION_MESSAGE, icon);
             } else {
                 status = "Banco de dados nao inicializado!";
