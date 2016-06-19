@@ -1,3 +1,5 @@
+package codigos;
+
 public class Profissional extends Pessoa {
 
     private long numMatricula;

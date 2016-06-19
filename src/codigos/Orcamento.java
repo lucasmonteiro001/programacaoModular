@@ -1,6 +1,7 @@
+package codigos;
+
 import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.Map;
 
 public class Orcamento {
 
@@ -8,7 +9,7 @@ public class Orcamento {
     private Object matriculaProfissional;
     private Date numHorasTrabalho;
     private double valorHoraTrabalho;
-    private Map<String, double> materialUsado;
+    //  private Map<String, double> materialUsado;
     private double valorISS;
     private double valorTotalServico;
     private LocalDateTime prazoOrcamento;

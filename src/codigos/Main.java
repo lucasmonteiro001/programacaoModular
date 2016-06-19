@@ -1,3 +1,5 @@
+package codigos;
+
 import static com.MySQLConnector.MySQLConnector.*;
 import static java.lang.System.out;
 
@@ -6,13 +8,15 @@ import static java.lang.System.out;
  */
 public class Main {
     public static void main(String[] args) {
-        out.println("Conexao: " + getMySQLConnector());
+        String usuario = " ";
+        String senha = " ";
+        out.println("Conexao: " + getMySQLConnector(usuario, senha));
         out.println("Status da conexao: \n" + connectionStatus());
-        out.println("Fechando a conexao: \n" + closeConnection());
+        out.println("Fechando a conexao: \n" + closeConnection(usuario, senha));
         out.println("Status da conexao: \n" + connectionStatus());
-        out.println("Reiniciando a conexao: \n" + restartConnection());
+        out.println("Reiniciando a conexao: \n" + restartConnection(usuario, senha));
         out.println("Status da conexao: \n" + connectionStatus());
-        out.println("Fechando a conexao: \n" + closeConnection());
+        out.println("Fechando a conexao: \n" + closeConnection(usuario, senha));
         out.println("Status da conexao: \n" + connectionStatus());
     }
 }
