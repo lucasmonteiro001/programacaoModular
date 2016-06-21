@@ -8,8 +8,8 @@ import static java.lang.System.out;
  */
 public class Main {
     public static void main(String[] args) {
-        String usuario = " ";
-        String senha = " ";
+        String usuario = "";
+        String senha = "";
         out.println("Conexao: " + getMySQLConnector(usuario, senha));
         out.println("Status da conexao: \n" + connectionStatus());
         out.println("Fechando a conexao: \n" + closeConnection(usuario, senha));

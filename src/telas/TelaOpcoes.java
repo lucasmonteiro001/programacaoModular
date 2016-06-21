@@ -48,9 +48,19 @@ public class TelaOpcoes extends javax.swing.JFrame {
         jLabel2.setText("Emperesa Faz Consertos");
 
         menuCliente.setText("Cliente");
+        menuCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuClienteActionPerformed(evt);
+            }
+        });
 
         menuCadastrarCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuCadastrarCliente.setText("Cadastrar Cliente");
+        menuCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCadastrarClienteActionPerformed(evt);
+            }
+        });
         menuCliente.add(menuCadastrarCliente);
 
         menuBar.add(menuCliente);
@@ -89,6 +99,16 @@ public class TelaOpcoes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void menuCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarClienteActionPerformed
+        
+       new TelaCadastrarCliente().setVisible(true);
+
+    }//GEN-LAST:event_menuCadastrarClienteActionPerformed
+
+    private void menuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuClienteActionPerformed
 
     /**
      * @param args the command line arguments

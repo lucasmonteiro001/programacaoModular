@@ -12,6 +12,7 @@ public class MySQLConnector {
     public static String status = "Nao ha conexao ao banco de dados...";
     static String username;
     static String password;
+    public static Connection conn;
 
     // Metodo construtor da classe
     public MySQLConnector() {
@@ -51,6 +52,9 @@ public class MySQLConnector {
                 status = "Banco de dados nao inicializado!";
                 JOptionPane.showMessageDialog(null, status);
             }
+            
+            MySQLConnector.conn = connection;
+            
             return connection;
         } catch (ClassNotFoundException e) {
             status = "O driver especificado nao foi encontrado.\n" + e.getMessage();
