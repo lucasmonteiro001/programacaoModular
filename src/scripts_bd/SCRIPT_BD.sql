@@ -21,12 +21,12 @@ USE `cadastros` ;
 CREATE TABLE IF NOT EXISTS `cadastros`.`cliente` (
   `idCliente` INT(10) NOT NULL AUTO_INCREMENT,
   `cpf` VARCHAR(14) NOT NULL,
-  `identidade` VARCHAR(10) NOT NULL,
+  `identidade` VARCHAR(20) NOT NULL,
   `nomeCliente` VARCHAR(30) NOT NULL,
   `dataNascimento` DATE NOT NULL DEFAULT '1900-01-01',
-  `emailCliente` VARCHAR(20) NOT NULL,
+  `emailCliente` VARCHAR(50) NOT NULL,
   `enderecoCliente` VARCHAR(50) NOT NULL,
-  `telefoneCliente` VARCHAR(9) NOT NULL,
+  `telefoneCliente` VARCHAR(14) NOT NULL,
   PRIMARY KEY (`idCliente`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;

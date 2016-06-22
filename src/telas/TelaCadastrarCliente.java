@@ -207,9 +207,6 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
 
     private void salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarActionPerformed
         
-        System.out.println(this.cpf.getText());
-        
-        System.out.println("Salvou");
         try {
             // Conecta com o banco
 //            Statement st = MySQLConnector.conn.createStatement();

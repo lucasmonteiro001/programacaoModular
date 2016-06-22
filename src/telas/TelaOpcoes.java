@@ -1,6 +1,13 @@
 
 package telas;
 
+import com.MySQLConnector.MySQLConnector;
+import com.MySQLConnector.MySQLConnector;
+import java.awt.event.WindowEvent;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 public class TelaOpcoes extends javax.swing.JFrame {
 
     public TelaOpcoes() {
@@ -16,6 +23,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         menuCliente = new javax.swing.JMenu();
         menuCadastrarCliente = new javax.swing.JMenuItem();
+        alterarDadosCliente = new javax.swing.JMenuItem();
         menuOS = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         menuOrcamento = new javax.swing.JMenu();
@@ -48,17 +56,19 @@ public class TelaOpcoes extends javax.swing.JFrame {
         });
         menuCliente.add(menuCadastrarCliente);
 
+        alterarDadosCliente.setText("Alterar dados do Cliente");
+        alterarDadosCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alterarDadosClienteActionPerformed(evt);
+            }
+        });
+        menuCliente.add(alterarDadosCliente);
+
         menuBar.add(menuCliente);
 
         menuOS.setText("Ordem de Servico");
-        menuOS.setContentAreaFilled(false);
-        menuOS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuOSActionPerformed(evt);
-            }
-        });
 
-        jMenuItem1.setText("Solicitação OS");
+        jMenuItem1.setText("Criar ordem de serviço");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -118,6 +128,36 @@ public class TelaOpcoes extends javax.swing.JFrame {
         new TelaOrdemServico().setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void alterarDadosClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarDadosClienteActionPerformed
+        // TODO add your handling code here:
+        String nomeCliente = JOptionPane.showInputDialog("Digite o nome do cliente para alterar");
+        
+        while(nomeCliente.equals("")) {
+            nomeCliente = JOptionPane.showInputDialog("Digite o nome do cliente para alterar");
+        }
+        
+        try {
+                       
+            String buscaCliente = "SELECT * FROM cliente where nomeCliente = \"" + nomeCliente + "\"";
+            Statement st = MySQLConnector.conn.createStatement();
+            ResultSet rs = st.executeQuery(buscaCliente);
+            
+            // Verifica se o cliente foi encontrado no banco.
+            if(rs.next() == false) {
+                JOptionPane.showMessageDialog(this, "Cliente não encontrado");
+                return;
+            }
+            
+            new TelaAlterarCliente(nomeCliente).setVisible(true);
+          
+                     
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        
+    }//GEN-LAST:event_alterarDadosClienteActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -150,6 +190,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem alterarDadosCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMenuItem1;
