@@ -278,32 +278,42 @@ public class TelaOrdemServico extends javax.swing.JFrame {
             //pegando id cliente
             String verificaIdClienteSQL = "select idCliente from cliente where cpf = " + "(?)";
             PreparedStatement preparedStatementCliente = MySQLConnector.conn.prepareStatement(verificaIdClienteSQL);
-            preparedStatement.setString(1, this.cpfCliente.getText());
-            ResultSet rs = preparedStatementCliente.executeQuery();            
-            preparedStatement.setInt(1, rs.getInt(1));
+            preparedStatementCliente.setString(1, this.cpfCliente.getText());
+            ResultSet rs = preparedStatementCliente.executeQuery(); 
+            if(rs != null && rs.next()){
+                System.out.println(rs.getInt("idCliente"));
+                preparedStatement.setInt(1, rs.getInt("idCliente"));
+            }
             rs.close();
             
             //pegando id habilidade
             String verificaIdHabilidadeSQL = "select idHabilidade from habilidade where habilidade = " + "(?)";
-            PreparedStatement preparedStatementHabilidade = MySQLConnector.conn.prepareStatement(verificaIdClienteSQL);
-            preparedStatement.setString(1, this.habilidadeOS.getItemAt(0));
-            ResultSet rsHabilidade = preparedStatementHabilidade.executeQuery();            
-            preparedStatement.setInt(2, rsHabilidade.getInt(1));
-            rs.close();
+            PreparedStatement preparedStatementHabilidade = MySQLConnector.conn.prepareStatement(verificaIdHabilidadeSQL);
+            preparedStatementHabilidade.setString(1, this.habilidadeOS.getItemAt(0));
+            ResultSet rsHabilidade = preparedStatementHabilidade.executeQuery();  
+            if(rsHabilidade != null && rsHabilidade.next()){
+                System.out.println(rsHabilidade.getInt("idHabilidade"));
+                preparedStatement.setInt(2, rsHabilidade.getInt("idHabilidade"));
+            }
+            rsHabilidade.close();
             
             preparedStatement.setString(3, this.servicoOS.getText());
             
             //pegando id status
             String verificaIdStatusSQL = "select idStatus from status where status = " + "(?)";
-            PreparedStatement preparedStatementStatus = MySQLConnector.conn.prepareStatement(verificaIdClienteSQL);
-            preparedStatement.setString(1, this.habilidadeOS.getItemAt(0));
-            ResultSet rsStatus = preparedStatementStatus.executeQuery();            
-            preparedStatement.setInt(4, rsStatus.getInt(1));
-            rs.close();
+            PreparedStatement preparedStatementStatus = MySQLConnector.conn.prepareStatement(verificaIdStatusSQL);
+            preparedStatementStatus.setString(1, this.statusOS.getItemAt(0));
+            ResultSet rsStatus = preparedStatementStatus.executeQuery();
+            if(rsStatus != null && rsStatus.next()){
+                System.out.println(rsStatus.getInt("idStatus"));
+                preparedStatement.setInt(4, rsStatus.getInt("idStatus"));
+            }
+            rsStatus.close();
                        
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
             Date date = new Date();
             String dateformated = dateFormat.format(date);
+            System.out.println(dateformated);   
             preparedStatement.setString(5, dateformated);
             
             preparedStatement.setString(6, this.anotacoesOS.getText());
@@ -313,6 +323,8 @@ public class TelaOrdemServico extends javax.swing.JFrame {
         catch (Exception e) {
             e.printStackTrace();
         }
+        
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void servicoOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicoOSActionPerformed
