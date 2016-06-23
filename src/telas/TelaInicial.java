@@ -47,7 +47,7 @@ public class TelaInicial extends javax.swing.JFrame {
         labelNomeEmpresa.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         labelNomeEmpresa.setText("Empresa Faz Consertos");
 
-        iconEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logotipo1.jpg"))); // NOI18N
+        iconEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logotipo1.png"))); // NOI18N
 
         labelUsuario.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         labelUsuario.setText("Usuário:");
@@ -69,7 +69,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
 
         buttonAcessar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        buttonAcessar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/sim.jpg"))); // NOI18N
+        buttonAcessar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/sim.png"))); // NOI18N
         buttonAcessar.setText("Acessar");
         buttonAcessar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,7 +78,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
 
         buttonCancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        buttonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/nao.jpg"))); // NOI18N
+        buttonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/nao.png"))); // NOI18N
         buttonCancelar.setText("Cancelar");
         buttonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,7 +133,7 @@ public class TelaInicial extends javax.swing.JFrame {
                             .addComponent(buttonCancelar))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(iconEmpresa)
                         .addContainerGap())))
         );

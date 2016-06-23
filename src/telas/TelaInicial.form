@@ -80,7 +80,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="iconEmpresa" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -101,7 +101,7 @@
     <Component class="javax.swing.JLabel" name="iconEmpresa">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/icons/logotipo1.jpg"/>
+          <Image iconType="3" name="/icons/logotipo1.png"/>
         </Property>
       </Properties>
     </Component>
@@ -142,7 +142,7 @@
           <Font name="Tahoma" size="14" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/icons/sim.jpg"/>
+          <Image iconType="3" name="/icons/sim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Acessar"/>
       </Properties>
@@ -156,7 +156,7 @@
           <Font name="Tahoma" size="14" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/icons/nao.jpg"/>
+          <Image iconType="3" name="/icons/nao.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
