@@ -4,7 +4,10 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Orcamento {
-
+    
+    private static int numeroOS;
+    
+    
     private String descricaoOrcamento;
     private Object matriculaProfissional;
     private Date numHorasTrabalho;
@@ -35,4 +38,14 @@ public class Orcamento {
         throw new UnsupportedOperationException();
     }
 
+    public static int getNumeroOS() {
+        return numeroOS;
+    }
+
+    public static void setNumeroOS(int numOS) {
+        Orcamento.numeroOS = numOS;
+    }
+
+    
+    
 }

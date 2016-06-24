@@ -60,6 +60,31 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Orcamento"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="menuVisualizaOrcamento">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Orcamento"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuVisualizaOrcamentoActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="menuManutencao">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Manutencao"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="menuTabelaMaterial">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tabela Material"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuTabelaMaterialActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>

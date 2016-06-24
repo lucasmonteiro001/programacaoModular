@@ -28,6 +28,9 @@ public class TelaOpcoes extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         menuOrcamento = new javax.swing.JMenu();
+        menuVisualizaOrcamento = new javax.swing.JMenuItem();
+        menuManutencao = new javax.swing.JMenu();
+        menuTabelaMaterial = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Módulo de Atendimento - Faz Consertos");
@@ -88,7 +91,28 @@ public class TelaOpcoes extends javax.swing.JFrame {
         menuBar.add(menuOS);
 
         menuOrcamento.setText("Orcamento");
+
+        menuVisualizaOrcamento.setText("Orcamento");
+        menuVisualizaOrcamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuVisualizaOrcamentoActionPerformed(evt);
+            }
+        });
+        menuOrcamento.add(menuVisualizaOrcamento);
+
         menuBar.add(menuOrcamento);
+
+        menuManutencao.setText("Manutencao");
+
+        menuTabelaMaterial.setText("Tabela Material");
+        menuTabelaMaterial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuTabelaMaterialActionPerformed(evt);
+            }
+        });
+        menuManutencao.add(menuTabelaMaterial);
+
+        menuBar.add(menuManutencao);
 
         setJMenuBar(menuBar);
 
@@ -171,6 +195,15 @@ public class TelaOpcoes extends javax.swing.JFrame {
         new TelaGridTecnico().setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void menuVisualizaOrcamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVisualizaOrcamentoActionPerformed
+        new TelaOrcamento().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_menuVisualizaOrcamentoActionPerformed
+
+    private void menuTabelaMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTabelaMaterialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuTabelaMaterialActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -211,7 +244,10 @@ public class TelaOpcoes extends javax.swing.JFrame {
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuCadastrarCliente;
     private javax.swing.JMenu menuCliente;
+    private javax.swing.JMenu menuManutencao;
     private javax.swing.JMenu menuOS;
     private javax.swing.JMenu menuOrcamento;
+    private javax.swing.JMenuItem menuTabelaMaterial;
+    private javax.swing.JMenuItem menuVisualizaOrcamento;
     // End of variables declaration//GEN-END:variables
 }
