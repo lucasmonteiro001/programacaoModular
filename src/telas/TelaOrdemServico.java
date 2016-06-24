@@ -66,7 +66,7 @@ public class TelaOrdemServico extends javax.swing.JFrame {
         telCliente = new javax.swing.JTextField();
         confirmaCliente = new javax.swing.JToggleButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("OS");
 
