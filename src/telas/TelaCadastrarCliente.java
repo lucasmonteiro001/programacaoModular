@@ -216,10 +216,10 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
 //                System.out.println(rs.getString("status"));
 //            }
 
-            String data[] = this.dataNasc.getText().split("/");
-            int dia = Integer.parseInt(data[0]),
-                    mes = Integer.parseInt(data[1]),
-                    ano = Integer.parseInt(data[2]);
+            String data = this.dataNasc.getText();
+            SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+            java.util.Date dataTeste;
+            dataTeste = formatador.parse(data);
             
             String insertTableSQL = "INSERT INTO cliente"
                     + "(cpf, identidade, nomeCliente, dataNascimento, "
@@ -229,7 +229,7 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
             preparedStatement.setString(1, this.cpf.getText());
             preparedStatement.setString(2, this.identidade.getText());
             preparedStatement.setString(3, this.nome.getText());
-            preparedStatement.setDate(4, new Date(ano, mes, dia));
+            preparedStatement.setDate(4, new java.sql.Date(dataTeste.getTime()));
             preparedStatement.setString(5, this.email.getText());
             preparedStatement.setString(6, this.endereco.getText());
             preparedStatement.setString(7, this.telefone.getText());
