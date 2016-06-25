@@ -7,6 +7,7 @@ package telas;
 
 import com.MySQLConnector.MySQLConnector;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -16,6 +17,22 @@ public class TelaCadastrarTecnico extends javax.swing.JFrame {
     
     public TelaCadastrarTecnico() {
         initComponents();
+        
+        try{
+            String verificahabilidades = "select habilidade from habilidade";
+            PreparedStatement preparedStatement = MySQLConnector.conn.prepareStatement(verificahabilidades);
+
+            ResultSet rs = preparedStatement.executeQuery();            
+            while (rs.next())
+            {
+               habilidadeTecnico.addItem(rs.getString(1));
+            }
+            rs.close();
+            } catch (Exception e) {
+            e.printStackTrace();
+            }
+        
+        
         setLocationRelativeTo(null);
     }
 
@@ -32,11 +49,11 @@ public class TelaCadastrarTecnico extends javax.swing.JFrame {
         nome = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
         matricula = new javax.swing.JTextField();
-        habilidade = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         telefone = new javax.swing.JFormattedTextField();
+        habilidadeTecnico = new javax.swing.JComboBox<>();
 
         jLabel4.setText("jLabel4");
 
@@ -73,8 +90,6 @@ public class TelaCadastrarTecnico extends javax.swing.JFrame {
             }
         });
 
-        habilidade.setBorder(null);
-
         jButton1.setText("Salvar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +118,12 @@ public class TelaCadastrarTecnico extends javax.swing.JFrame {
             }
         });
 
+        habilidadeTecnico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                habilidadeTecnicoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,8 +149,8 @@ public class TelaCadastrarTecnico extends javax.swing.JFrame {
                                 .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE))
                             .addComponent(matricula)
-                            .addComponent(habilidade, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                            .addComponent(telefone))))
+                            .addComponent(telefone)
+                            .addComponent(habilidadeTecnico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(42, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(129, 129, 129)
@@ -137,7 +158,7 @@ public class TelaCadastrarTecnico extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {email, habilidade, matricula, nome});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {email, matricula, nome});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,18 +187,18 @@ public class TelaCadastrarTecnico extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(matricula, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(habilidade, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                    .addComponent(habilidadeTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {habilidade, matricula, nome});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {matricula, nome});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -197,7 +218,18 @@ public class TelaCadastrarTecnico extends javax.swing.JFrame {
                     + "(idHabilidade, matriculaTecnico, nomeTecnico, emailTecnico, telefoneTecnico) VALUES"
                     + "(?,?,?,?,?)";
             PreparedStatement preparedStatement = MySQLConnector.conn.prepareStatement(insertTableSQL);
-            preparedStatement.setInt(1, Integer.parseInt(this.habilidade.getText()));
+            
+             //pegando id habilidade
+            String verificaIdHabilidadeSQL = "select idHabilidade from habilidade where habilidade = " + "(?)";
+            PreparedStatement preparedStatementHabilidade = MySQLConnector.conn.prepareStatement(verificaIdHabilidadeSQL);
+            preparedStatementHabilidade.setString(1, this.habilidadeTecnico.getItemAt(0));
+            ResultSet rsHabilidade = preparedStatementHabilidade.executeQuery();  
+            if(rsHabilidade != null && rsHabilidade.next()){
+                System.out.println(rsHabilidade.getInt("idHabilidade"));
+                preparedStatement.setInt(1, rsHabilidade.getInt("idHabilidade"));
+            }
+            rsHabilidade.close();
+            
             preparedStatement.setString(2, this.matricula.getText());
             preparedStatement.setString(3, this.nome.getText());
             preparedStatement.setString(4, this.email.getText());
@@ -226,13 +258,17 @@ public class TelaCadastrarTecnico extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void habilidadeTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_habilidadeTecnicoActionPerformed
+
+    }//GEN-LAST:event_habilidadeTecnicoActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField email;
-    private javax.swing.JTextField habilidade;
+    private javax.swing.JComboBox<String> habilidadeTecnico;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
