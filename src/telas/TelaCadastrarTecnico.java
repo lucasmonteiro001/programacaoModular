@@ -15,8 +15,8 @@ import java.sql.PreparedStatement;
 public class TelaCadastrarTecnico extends javax.swing.JFrame {
     
     public TelaCadastrarTecnico() {
-        setLocationRelativeTo(null);
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")

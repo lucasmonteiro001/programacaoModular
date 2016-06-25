@@ -12,6 +12,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
 
     public TelaOpcoes() {
         initComponents();
+         setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
