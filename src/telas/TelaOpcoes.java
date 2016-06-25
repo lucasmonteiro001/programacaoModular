@@ -24,6 +24,8 @@ public class TelaOpcoes extends javax.swing.JFrame {
         menuCliente = new javax.swing.JMenu();
         menuCadastrarCliente = new javax.swing.JMenuItem();
         alterarDadosCliente = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         menuOS = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -71,6 +73,18 @@ public class TelaOpcoes extends javax.swing.JFrame {
         menuCliente.add(alterarDadosCliente);
 
         menuBar.add(menuCliente);
+
+        jMenu1.setText("Técnico");
+
+        jMenuItem3.setText("Cadastrar Técnico");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
+        menuBar.add(jMenu1);
 
         menuOS.setText("Ordem de Servico");
 
@@ -152,7 +166,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addContainerGap(282, Short.MAX_VALUE))
+                .addContainerGap(284, Short.MAX_VALUE))
         );
 
         pack();
@@ -208,6 +222,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         new TelaGridTecnico().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void menuVisualizaOrcamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVisualizaOrcamentoActionPerformed
@@ -222,6 +237,12 @@ public class TelaOpcoes extends javax.swing.JFrame {
     private void menuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_menuItemSairActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        new TelaCadastrarTecnico().setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -258,8 +279,10 @@ public class TelaOpcoes extends javax.swing.JFrame {
     private javax.swing.JMenuItem alterarDadosCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuCadastrarCliente;
     private javax.swing.JMenu menuCliente;
