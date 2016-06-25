@@ -208,7 +208,7 @@ public class TelaCadastrarTecnico extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+        new TelaOpcoes().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
