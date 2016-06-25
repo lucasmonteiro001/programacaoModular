@@ -5,6 +5,8 @@
  */
 package telas;
 
+import codigos.Orcamento;
+
 /**
  *
  * @author f6770459
@@ -27,21 +29,465 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanelElaborarOrcamento = new javax.swing.JPanel();
+        labelModuloElaboracaoOrcamento = new javax.swing.JLabel();
+        labelOS = new javax.swing.JLabel();
+        labelNumOS = new javax.swing.JLabel();
+        labelMatrTecnico = new javax.swing.JLabel();
+        labelNumMatrTecnico = new javax.swing.JLabel();
+        labelNomeTencnico = new javax.swing.JLabel();
+        labelCliente = new javax.swing.JLabel();
+        labelCPF = new javax.swing.JLabel();
+        labelNomeCliente = new javax.swing.JLabel();
+        labelTelefone = new javax.swing.JLabel();
+        labelNumTelContato = new javax.swing.JLabel();
+        labelSolicitacao = new javax.swing.JLabel();
+        textSolicitacaoCliente = new javax.swing.JTextField();
+        textAndamentoServico = new java.awt.TextArea();
+        labelDescricaoOrcamento = new javax.swing.JLabel();
+        labelHorasNecessarias = new javax.swing.JLabel();
+        textHorasNecessarias = new javax.swing.JTextField();
+        labelValorHora = new javax.swing.JLabel();
+        textValorHoraTrabalho = new javax.swing.JTextField();
+        labelMaterialNecessario = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableMaterial = new javax.swing.JTable();
+        labelMaoDeObra = new javax.swing.JLabel();
+        textValorMaoDeObra = new javax.swing.JTextField();
+        labelISSQN = new javax.swing.JLabel();
+        textValorISSQN = new javax.swing.JTextField();
+        labelValMaterial = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        labelTotalOrcamento = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        textValorMaterial = new javax.swing.JTextField();
+        textValorTotalOrcamento = new javax.swing.JTextField();
+        labelValidadeOrcamento = new javax.swing.JLabel();
+        comboBoxDias = new javax.swing.JComboBox<>();
+        labelDias = new javax.swing.JLabel();
+        buttonGravaOrcamento = new javax.swing.JButton();
+        buttonCancelaOrcamento = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Modulo de Elaboracao de Orcamento");
+
+        labelModuloElaboracaoOrcamento.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        labelModuloElaboracaoOrcamento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelModuloElaboracaoOrcamento.setText("Modulo de Elaboracao de Orcamento");
+        labelModuloElaboracaoOrcamento.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        labelOS.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelOS.setText("Nº da OS:");
+
+        labelNumOS.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelNumOS.setForeground(new java.awt.Color(0, 0, 204));
+        labelNumOS.setText(String.valueOf(Orcamento.getNumeroOS()));
+
+        labelMatrTecnico.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelMatrTecnico.setText("Matr. do Tecnico:");
+
+        labelNumMatrTecnico.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelNumMatrTecnico.setForeground(new java.awt.Color(0, 0, 153));
+        labelNumMatrTecnico.setText("# Matr Tecnico");
+
+        labelNomeTencnico.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelNomeTencnico.setText("Nome do Tecnico");
+
+        labelCliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelCliente.setText("Cliente:");
+
+        labelCPF.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelCPF.setForeground(new java.awt.Color(0, 0, 204));
+        labelCPF.setText("CPF Cliente");
+
+        labelNomeCliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelNomeCliente.setText("Nome do Cliente");
+
+        labelTelefone.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelTelefone.setText("Tel. Contato:");
+
+        labelNumTelContato.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelNumTelContato.setForeground(new java.awt.Color(0, 0, 153));
+        labelNumTelContato.setText("# Tel Contato");
+
+        labelSolicitacao.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelSolicitacao.setText("Solicitacao do Cliente:");
+
+        textSolicitacaoCliente.setEditable(false);
+        textSolicitacaoCliente.setText("Extrair do BD os dados da solicitação do cliente");
+
+        textAndamentoServico.setName(""); // NOI18N
+        textAndamentoServico.setText("Descreva aqui o orcamento e seu andamento");
+
+        labelDescricaoOrcamento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelDescricaoOrcamento.setText("Descricao do Orcamento e Andamento do Servico");
+
+        labelHorasNecessarias.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelHorasNecessarias.setText("Nº Horas Necessarias:");
+        labelHorasNecessarias.setToolTipText("Informar o numero de horas necessarias para a execucao do servico");
+
+        textHorasNecessarias.setText("999");
+        textHorasNecessarias.setToolTipText("Informe o numero de horas necessarias para a execucao do servico");
+        textHorasNecessarias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textHorasNecessariasActionPerformed(evt);
+            }
+        });
+
+        labelValorHora.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelValorHora.setText("Valor da Hora de Trabalho:");
+        labelValorHora.setToolTipText("Informar o valor da hora trabalhada");
+
+        textValorHoraTrabalho.setText("999");
+        textValorHoraTrabalho.setToolTipText("Informar o valor da hora trabalhada.");
+        textValorHoraTrabalho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textValorHoraTrabalhoActionPerformed(evt);
+            }
+        });
+
+        labelMaterialNecessario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelMaterialNecessario.setText("Material(ais) Necessario(s) Para a Execucao do Servico:");
+        labelMaterialNecessario.setToolTipText("");
+
+        tableMaterial.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        tableMaterial.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Material / Peca", "Preco"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tableMaterial);
+
+        labelMaoDeObra.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelMaoDeObra.setText("Valor da Mao-de-Obra:");
+        labelMaoDeObra.setToolTipText("Retorna o valor total da mao-de-obra.");
+
+        textValorMaoDeObra.setEditable(false);
+        textValorMaoDeObra.setText("999");
+        textValorMaoDeObra.setToolTipText("Retorna o valor total da mao-de-obra");
+        textValorMaoDeObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textValorMaoDeObraActionPerformed(evt);
+            }
+        });
+
+        labelISSQN.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelISSQN.setText("Valor do ISSQN (5%):");
+        labelISSQN.setToolTipText("Retorna o valor total da mao-de-obra.");
+
+        textValorISSQN.setEditable(false);
+        textValorISSQN.setText("999");
+        textValorISSQN.setToolTipText("Retorna o valor total da mao-de-obra");
+        textValorISSQN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textValorISSQNActionPerformed(evt);
+            }
+        });
+
+        labelValMaterial.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelValMaterial.setText("Valor dos Materiais / Peças:");
+        labelValMaterial.setToolTipText("Retorna o valor total da mao-de-obra.");
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setText("R$");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setText("R$");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setText("R$");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setText("R$");
+
+        labelTotalOrcamento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelTotalOrcamento.setText("Valor Total do Orcamento:");
+        labelTotalOrcamento.setToolTipText("Retorna o valor total orcado para a execucao do servico");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setText("R$");
+
+        textValorMaterial.setEditable(false);
+        textValorMaterial.setText("999");
+        textValorMaterial.setToolTipText("Retorna o valor total dos materiais");
+        textValorMaterial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textValorMaterialActionPerformed(evt);
+            }
+        });
+
+        textValorTotalOrcamento.setEditable(false);
+        textValorTotalOrcamento.setText("999");
+        textValorTotalOrcamento.setToolTipText("Retorna o valor total dos materiais");
+        textValorTotalOrcamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textValorTotalOrcamentoActionPerformed(evt);
+            }
+        });
+
+        labelValidadeOrcamento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelValidadeOrcamento.setText("Orcamento Valido Por:");
+        labelValidadeOrcamento.setToolTipText("Dias de Validade do Orcamento");
+
+        comboBoxDias.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        comboBoxDias.setForeground(new java.awt.Color(0, 0, 204));
+        comboBoxDias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "30", "60", "90" }));
+        comboBoxDias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxDiasActionPerformed(evt);
+            }
+        });
+
+        labelDias.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelDias.setText("Dias");
+
+        buttonGravaOrcamento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        buttonGravaOrcamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/sim.png"))); // NOI18N
+        buttonGravaOrcamento.setText("Grava Orcamento");
+        buttonGravaOrcamento.setToolTipText("Efetua a gravacao do Orcamento e abre tela para consulta");
+
+        buttonCancelaOrcamento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        buttonCancelaOrcamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/nao.png"))); // NOI18N
+        buttonCancelaOrcamento.setText("Cancela Gravacao");
+        buttonCancelaOrcamento.setToolTipText("Nao efetua a gravacao do orcamento e volta para a tela anterior");
+        buttonCancelaOrcamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelaOrcamentoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelElaborarOrcamentoLayout = new javax.swing.GroupLayout(jPanelElaborarOrcamento);
+        jPanelElaborarOrcamento.setLayout(jPanelElaborarOrcamentoLayout);
+        jPanelElaborarOrcamentoLayout.setHorizontalGroup(
+            jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                        .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelMaterialNecessario)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(buttonGravaOrcamento)
+                                .addGap(18, 18, 18)
+                                .addComponent(buttonCancelaOrcamento)))
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                                .addComponent(labelISSQN)
+                                .addGap(42, 42, 42)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textValorISSQN, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                                    .addComponent(labelValorHora)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(textValorHoraTrabalho))
+                                .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                                    .addComponent(labelHorasNecessarias)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(textHorasNecessarias, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                                    .addComponent(labelMaoDeObra)
+                                    .addGap(37, 37, 37)
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(textValorMaoDeObra, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                                .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                                        .addComponent(labelValMaterial)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel1))
+                                    .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                                        .addComponent(labelTotalOrcamento)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel5)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textValorMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(textValorTotalOrcamento, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                                .addComponent(labelValidadeOrcamento)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(comboBoxDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelDias)))
+                        .addGap(71, 175, Short.MAX_VALUE))
+                    .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                        .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                                .addComponent(labelOS)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelNumOS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(25, 25, 25)
+                                .addComponent(labelMatrTecnico)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelNumMatrTecnico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelNomeTencnico, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                                .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                                        .addComponent(labelCliente)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(labelCPF)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(labelNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(labelTelefone)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(labelNumTelContato))
+                                    .addComponent(labelSolicitacao)
+                                    .addComponent(labelDescricaoOrcamento))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(textSolicitacaoCliente)
+                            .addComponent(textAndamentoServico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
+            .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                .addGap(267, 267, 267)
+                .addComponent(labelModuloElaboracaoOrcamento)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanelElaborarOrcamentoLayout.setVerticalGroup(
+            jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                .addComponent(labelModuloElaboracaoOrcamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelOS)
+                    .addComponent(labelNumOS)
+                    .addComponent(labelMatrTecnico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelNumMatrTecnico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelNomeTencnico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelCliente)
+                    .addComponent(labelCPF)
+                    .addComponent(labelNomeCliente)
+                    .addComponent(labelTelefone)
+                    .addComponent(labelNumTelContato))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelSolicitacao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textSolicitacaoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelDescricaoOrcamento)
+                .addGap(2, 2, 2)
+                .addComponent(textAndamentoServico, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelHorasNecessarias)
+                    .addComponent(textHorasNecessarias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelMaterialNecessario))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                        .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelValorHora)
+                            .addComponent(textValorHoraTrabalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelMaoDeObra)
+                            .addComponent(textValorMaoDeObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelISSQN)
+                            .addComponent(textValorISSQN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelValMaterial)
+                            .addComponent(jLabel1)
+                            .addComponent(textValorMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelTotalOrcamento)
+                            .addComponent(jLabel5)
+                            .addComponent(textValorTotalOrcamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelValidadeOrcamento)
+                    .addComponent(comboBoxDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelDias)
+                    .addComponent(buttonGravaOrcamento)
+                    .addComponent(buttonCancelaOrcamento))
+                .addGap(328, 328, 328))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 591, Short.MAX_VALUE)
+            .addComponent(jPanelElaborarOrcamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 393, Short.MAX_VALUE)
+            .addComponent(jPanelElaborarOrcamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pack();
+        setSize(new java.awt.Dimension(913, 601));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void textHorasNecessariasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textHorasNecessariasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textHorasNecessariasActionPerformed
+
+    private void textValorHoraTrabalhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textValorHoraTrabalhoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textValorHoraTrabalhoActionPerformed
+
+    private void textValorMaoDeObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textValorMaoDeObraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textValorMaoDeObraActionPerformed
+
+    private void textValorISSQNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textValorISSQNActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textValorISSQNActionPerformed
+
+    private void textValorMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textValorMaterialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textValorMaterialActionPerformed
+
+    private void textValorTotalOrcamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textValorTotalOrcamentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textValorTotalOrcamentoActionPerformed
+
+    private void comboBoxDiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxDiasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxDiasActionPerformed
+
+    private void buttonCancelaOrcamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelaOrcamentoActionPerformed
+        new TelaOrcamento().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_buttonCancelaOrcamentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +525,46 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonCancelaOrcamento;
+    private javax.swing.JButton buttonGravaOrcamento;
+    private javax.swing.JComboBox<String> comboBoxDias;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanelElaborarOrcamento;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelCPF;
+    private javax.swing.JLabel labelCliente;
+    private javax.swing.JLabel labelDescricaoOrcamento;
+    private javax.swing.JLabel labelDias;
+    private javax.swing.JLabel labelHorasNecessarias;
+    private javax.swing.JLabel labelISSQN;
+    private javax.swing.JLabel labelMaoDeObra;
+    private javax.swing.JLabel labelMaterialNecessario;
+    private javax.swing.JLabel labelMatrTecnico;
+    private javax.swing.JLabel labelModuloElaboracaoOrcamento;
+    private javax.swing.JLabel labelNomeCliente;
+    private javax.swing.JLabel labelNomeTencnico;
+    private javax.swing.JLabel labelNumMatrTecnico;
+    private javax.swing.JLabel labelNumOS;
+    private javax.swing.JLabel labelNumTelContato;
+    private javax.swing.JLabel labelOS;
+    private javax.swing.JLabel labelSolicitacao;
+    private javax.swing.JLabel labelTelefone;
+    private javax.swing.JLabel labelTotalOrcamento;
+    private javax.swing.JLabel labelValMaterial;
+    private javax.swing.JLabel labelValidadeOrcamento;
+    private javax.swing.JLabel labelValorHora;
+    private javax.swing.JTable tableMaterial;
+    private java.awt.TextArea textAndamentoServico;
+    private javax.swing.JTextField textHorasNecessarias;
+    private javax.swing.JTextField textSolicitacaoCliente;
+    private javax.swing.JTextField textValorHoraTrabalho;
+    private javax.swing.JTextField textValorISSQN;
+    private javax.swing.JTextField textValorMaoDeObra;
+    private javax.swing.JTextField textValorMaterial;
+    private javax.swing.JTextField textValorTotalOrcamento;
     // End of variables declaration//GEN-END:variables
 }

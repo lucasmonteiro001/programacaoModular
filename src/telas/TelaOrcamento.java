@@ -63,6 +63,7 @@ public class TelaOrcamento extends javax.swing.JFrame {
         labelOrcamento.setText("Orçamento");
         labelOrcamento.setToolTipText("Tela de Consulta e Alteração de Orçamento");
 
+        labelNumOS.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         labelNumOS.setText("Nº Ordem de Servico:");
 
         textNumOrcamento.setToolTipText("Informe o numero do orcamento para realizar as alteracoes");
@@ -72,7 +73,8 @@ public class TelaOrcamento extends javax.swing.JFrame {
             }
         });
 
-        buttonVisualizaOrcamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/sim.jpg"))); // NOI18N
+        buttonVisualizaOrcamento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        buttonVisualizaOrcamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/sim.png"))); // NOI18N
         buttonVisualizaOrcamento.setText("Visualiza / Elabora Orcamento");
         buttonVisualizaOrcamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +82,7 @@ public class TelaOrcamento extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Nº Orcamento:");
 
         textNumOS.setToolTipText("Informe o numero da OS para realizar a pesquisa");
@@ -89,6 +92,7 @@ public class TelaOrcamento extends javax.swing.JFrame {
             }
         });
 
+        buttonCancelaOrcamento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         buttonCancelaOrcamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/nao.png"))); // NOI18N
         buttonCancelaOrcamento.setText("Cancela");
         buttonCancelaOrcamento.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +106,7 @@ public class TelaOrcamento extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(buttonCancelaOrcamento)
@@ -113,19 +117,18 @@ public class TelaOrcamento extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(labelNumOS)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textNumOS))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(textNumOrcamento, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(54, 54, 54)
                         .addComponent(labelOrcamento, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelNumOS)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textNumOrcamento)
+                            .addComponent(textNumOS))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -186,6 +189,7 @@ public class TelaOrcamento extends javax.swing.JFrame {
                             JOptionPane.WARNING_MESSAGE);
                     
                     new TelaAlterarOrcamento().setVisible(true);
+               
                 
                 } else {
                     JOptionPane.showMessageDialog(null, "Nao ha orcamento para "
@@ -201,9 +205,9 @@ public class TelaOrcamento extends javax.swing.JFrame {
                 
             } catch(Exception e) {
                 e.printStackTrace();
-            }             
-        }
-        this.dispose();  
+            }
+            this.dispose(); 
+        } 
     }//GEN-LAST:event_buttonVisualizaOrcamentoActionPerformed
 
     private void buttonCancelaOrcamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelaOrcamentoActionPerformed

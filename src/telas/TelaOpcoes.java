@@ -31,6 +31,8 @@ public class TelaOpcoes extends javax.swing.JFrame {
         menuVisualizaOrcamento = new javax.swing.JMenuItem();
         menuManutencao = new javax.swing.JMenu();
         menuTabelaMaterial = new javax.swing.JMenuItem();
+        menuSair = new javax.swing.JMenu();
+        menuItemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Módulo de Atendimento - Faz Consertos");
@@ -113,6 +115,19 @@ public class TelaOpcoes extends javax.swing.JFrame {
         menuManutencao.add(menuTabelaMaterial);
 
         menuBar.add(menuManutencao);
+
+        menuSair.setText("Sair");
+
+        menuItemSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
+        menuItemSair.setText("Sair");
+        menuItemSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemSairActionPerformed(evt);
+            }
+        });
+        menuSair.add(menuItemSair);
+
+        menuBar.add(menuSair);
 
         setJMenuBar(menuBar);
 
@@ -204,6 +219,10 @@ public class TelaOpcoes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_menuTabelaMaterialActionPerformed
 
+    private void menuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_menuItemSairActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -244,9 +263,11 @@ public class TelaOpcoes extends javax.swing.JFrame {
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuCadastrarCliente;
     private javax.swing.JMenu menuCliente;
+    private javax.swing.JMenuItem menuItemSair;
     private javax.swing.JMenu menuManutencao;
     private javax.swing.JMenu menuOS;
     private javax.swing.JMenu menuOrcamento;
+    private javax.swing.JMenu menuSair;
     private javax.swing.JMenuItem menuTabelaMaterial;
     private javax.swing.JMenuItem menuVisualizaOrcamento;
     // End of variables declaration//GEN-END:variables
