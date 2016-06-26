@@ -7,14 +7,28 @@ package telas;
 
 import java.text.DecimalFormat;
 import codigos.Orcamento;
+import com.MySQLConnector.MySQLConnector;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
  * @author f6770459
  */
 public class TelaElaborarOrcamento extends javax.swing.JFrame {
-
+    
+    /**
+     * Declaracao de atributos
+     */
+    String numeroCPF, nomeCliente, telCliente, nomeTecnico, descricaoServico;
+    int matriculaTecnico;
+    
     /**
      * Creates new form TelaElaborarOrcamento
      */
@@ -97,33 +111,27 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
 
         labelNumMatrTecnico.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         labelNumMatrTecnico.setForeground(new java.awt.Color(0, 0, 153));
-        labelNumMatrTecnico.setText("# Matr Tecnico");
 
         labelNomeTencnico.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        labelNomeTencnico.setText("Nome do Tecnico");
 
         labelCliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         labelCliente.setText("Cliente:");
 
         labelCPF.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         labelCPF.setForeground(new java.awt.Color(0, 0, 204));
-        labelCPF.setText("CPF Cliente");
 
         labelNomeCliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        labelNomeCliente.setText("Nome do Cliente");
 
         labelTelefone.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         labelTelefone.setText("Tel. Contato:");
 
         labelNumTelContato.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         labelNumTelContato.setForeground(new java.awt.Color(0, 0, 153));
-        labelNumTelContato.setText("# Tel Contato");
 
         labelSolicitacao.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         labelSolicitacao.setText("Solicitacao do Cliente:");
 
         textSolicitacaoCliente.setEditable(false);
-        textSolicitacaoCliente.setText("Extrair do BD os dados da solicitação do cliente");
         textSolicitacaoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textSolicitacaoClienteActionPerformed(evt);
@@ -292,10 +300,15 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
         buttonRecuperaInfoOS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/loading.png"))); // NOI18N
         buttonRecuperaInfoOS.setText("Buscar Info OS");
         buttonRecuperaInfoOS.setToolTipText("Recupar os dados da Ordem de Serviço");
+        buttonRecuperaInfoOS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRecuperaInfoOSActionPerformed(evt);
+            }
+        });
 
         buttonSelecionarMaterial.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         buttonSelecionarMaterial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/selectItens.png"))); // NOI18N
-        buttonSelecionarMaterial.setText("Selecionar Materiais");
+        buttonSelecionarMaterial.setText("Seleciona Materiais");
         buttonSelecionarMaterial.setToolTipText("Selecionar os materiais a serem usados no servico");
 
         javax.swing.GroupLayout jPanelElaborarOrcamentoLayout = new javax.swing.GroupLayout(jPanelElaborarOrcamento);
@@ -306,32 +319,6 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelElaborarOrcamentoLayout.createSequentialGroup()
-                        .addComponent(labelOS)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelNumOS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(25, 25, 25)
-                        .addComponent(labelMatrTecnico)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelNumMatrTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(labelNomeTencnico, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(251, 251, 251))
-                    .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
-                        .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelSolicitacao)
-                            .addComponent(labelDescricaoOrcamento)
-                            .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
-                                .addComponent(labelCliente)
-                                .addGap(18, 18, 18)
-                                .addComponent(labelCPF)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(labelTelefone)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelNumTelContato)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelElaborarOrcamentoLayout.createSequentialGroup()
                         .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
                                 .addComponent(textSolicitacaoCliente)
@@ -339,7 +326,7 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
                                 .addComponent(buttonRecuperaInfoOS))
                             .addComponent(textAndamentoServico, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
-                                .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(labelMaterialNecessario)
                                     .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
                                         .addComponent(buttonSelecionarMaterial)
@@ -347,7 +334,7 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
                                         .addComponent(buttonGravarOrcamento)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(buttonCancelaOrcamento))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
                                 .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
@@ -392,10 +379,44 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
                                                 .addComponent(textValorISSQN, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addGap(5, 5, 5)
                                 .addComponent(buttonCalcular)))
-                        .addGap(106, 106, 106))))
+                        .addGap(106, 106, 106))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                        .addComponent(labelDescricaoOrcamento)
+                        .addGap(524, 524, 524))
+                    .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                        .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                                .addComponent(labelCliente)
+                                .addGap(18, 18, 18)
+                                .addComponent(labelCPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(labelNomeCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                                .addComponent(labelOS)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelNumOS, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                                .addComponent(labelMatrTecnico)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(labelNumMatrTecnico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(labelNomeTencnico, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(270, 270, 270))
+                            .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                                .addComponent(labelTelefone)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(labelNumTelContato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(477, 477, 477))))))
             .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
-                .addGap(267, 267, 267)
-                .addComponent(labelModuloElaboracaoOrcamento)
+                .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                        .addGap(267, 267, 267)
+                        .addComponent(labelModuloElaboracaoOrcamento))
+                    .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(labelSolicitacao)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanelElaborarOrcamentoLayout.setVerticalGroup(
@@ -403,19 +424,20 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
             .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
                 .addComponent(labelModuloElaboracaoOrcamento, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelOS)
-                    .addComponent(labelNumOS)
-                    .addComponent(labelMatrTecnico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelNumMatrTecnico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelOS)
+                        .addComponent(labelNumOS)
+                        .addComponent(labelMatrTecnico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelNumMatrTecnico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(labelNomeTencnico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelCliente)
-                    .addComponent(labelCPF)
-                    .addComponent(labelNomeCliente)
                     .addComponent(labelTelefone)
-                    .addComponent(labelNumTelContato))
+                    .addComponent(labelNumTelContato, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelSolicitacao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -448,10 +470,11 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
                             .addComponent(labelValMaterial)
                             .addComponent(textValorMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelMaoDeObra)
-                            .addComponent(textValorMaoDeObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
+                        .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textValorMaoDeObra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(labelMaoDeObra)
+                                .addComponent(jLabel2)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
@@ -491,7 +514,7 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
             .addComponent(jPanelElaborarOrcamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(877, 601));
+        setSize(new java.awt.Dimension(926, 601));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -557,6 +580,49 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
     private void textSolicitacaoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSolicitacaoClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textSolicitacaoClienteActionPerformed
+
+    private void buttonRecuperaInfoOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRecuperaInfoOSActionPerformed
+
+        try {
+            String executeQuerySQL = ("SELECT cliente.cpf, cliente.nomeCliente, "
+                + "cliente.telefoneCliente, tecnico.nomeTecnico, "
+                + "tecnico.matriculaTecnico, ordemservico.descricaoServico "
+                + "FROM ordemservico inner join cliente inner join tecnico WHERE "
+                + "ordemservico.idOS = " + String.valueOf(Orcamento.getNumeroOS())
+                + " and ordemservico.idCliente = cliente.idCliente and "
+                + "ordemservico.idTecnico = tecnico.idTecnico");
+            PreparedStatement stmt;
+  
+            stmt = MySQLConnector.conn.prepareStatement(executeQuerySQL);
+            ResultSet resultado = stmt.executeQuery(executeQuerySQL);
+            
+            while (resultado.next()) {                
+                numeroCPF = resultado.getString("cliente.cpf");
+                nomeCliente = resultado.getString("cliente.nomeCliente");
+                telCliente = resultado.getString("cliente.telefoneCliente");
+                nomeTecnico = resultado.getString("tecnico.nomeTecnico");
+                matriculaTecnico = resultado.getInt("tecnico.matriculaTecnico");
+                descricaoServico = resultado.getString("ordemservico.descricaoServico");
+            }
+            /* long strToLong = Long.parseLong(telCliente);
+            
+            String sf = String.format("%011l", strToLong);
+            telCliente = format("(##)#####-####", sf); 
+            */
+            telCliente = format("(##)####-####", telCliente);
+            labelNumMatrTecnico.setText(String.valueOf(matriculaTecnico));
+            labelNomeTencnico.setText(nomeTecnico);
+            labelCPF.setText(numeroCPF);
+            labelNomeCliente.setText(nomeCliente);
+            labelNumTelContato.setText(telCliente);
+            textSolicitacaoCliente.setText(descricaoServico);
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaElaborarOrcamento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+    }//GEN-LAST:event_buttonRecuperaInfoOSActionPerformed
 
     /**
      * @param args the command line arguments
@@ -639,4 +705,16 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
     private javax.swing.JTextField textValorMaterial;
     private javax.swing.JTextField textValorTotalOrcamento;
     // End of variables declaration//GEN-END:variables
+
+    private static String format(String pattern, Object value) { 
+        MaskFormatter mask; 
+            try { 
+                mask = new MaskFormatter(pattern); 
+                mask.setValueContainsLiteralCharacters(false); 
+                return mask.valueToString(value); 
+            } catch (ParseException e) { 
+                throw new RuntimeException(e); 
+            } 
+    } 
+
 }
