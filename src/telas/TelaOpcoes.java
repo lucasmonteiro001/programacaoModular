@@ -204,13 +204,13 @@ public class TelaOpcoes extends javax.swing.JFrame {
 
     private void alterarDadosClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarDadosClienteActionPerformed
         // TODO add your handling code here:
-        String nomeCliente = JOptionPane.showInputDialog("Digite o nome do cliente para alterar");
+        String nomeCliente = JOptionPane.showInputDialog("Digite o nome ou cpf do cliente para alterar");
         
         while(nomeCliente.equals("")) {
-            nomeCliente = JOptionPane.showInputDialog("Digite o nome do cliente para alterar");
+            nomeCliente = JOptionPane.showInputDialog("Digite o nome ou cpf do cliente para alterar");
         }
         
-        Cliente cliente = Cliente.getClienteByNome(nomeCliente);
+        Cliente cliente = Cliente.getClienteByNomeOuCpf(nomeCliente);
         
             
         // Verifica se o cliente foi encontrado no banco.

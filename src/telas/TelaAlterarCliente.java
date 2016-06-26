@@ -23,40 +23,42 @@ import javax.swing.JOptionPane;
  */
 public class TelaAlterarCliente extends javax.swing.JFrame {
     
+    private Cliente cliente = null;
+
     /**
      * Creates new form TelaAlterarCliente
+     *
      * @param nome
      */
     String idCliente;
+
     public TelaAlterarCliente(Cliente cliente) {
-        
+
         try {
             initComponents();
-            
+
             setLocationRelativeTo(null);
-            
+            setTitle("Alterar dados do cliente");
+
             this.nome.setText(cliente.getNomeCliente());
             this.email.setText(cliente.getEmailCliente());
             this.endereco.setText(cliente.getEnderecoCliente());
             this.cpf.setText(cliente.getCpf());
             this.identidade.setText(cliente.getIdentidade());
             this.telefone.setText(cliente.getTelefoneCliente());
-            
+
             String nascimento = cliente.getDataNascimento().toString();
-            SimpleDateFormat in= new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
             SimpleDateFormat out = new SimpleDateFormat("dd/MM/yyyy");
             String result = out.format(in.parse(nascimento.toString()));
-            
+
             this.dataNasc.setText(result);
-                    
             
+            this.cliente = cliente;
+
         } catch (ParseException ex) {
             Logger.getLogger(TelaAlterarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-                    
-                
-        
-         
 
     }
 
@@ -69,26 +71,56 @@ public class TelaAlterarCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        identidade = new javax.swing.JTextField();
+        cpf = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
+        dataNasc = new javax.swing.JFormattedTextField();
         salvar = new javax.swing.JButton();
+        telefone = new javax.swing.JFormattedTextField();
         jLabel2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        nome = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         endereco = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        identidade = new javax.swing.JTextField();
-        cpf = new javax.swing.JFormattedTextField();
-        dataNasc = new javax.swing.JFormattedTextField();
-        telefone = new javax.swing.JFormattedTextField();
-        jLabel7 = new javax.swing.JLabel();
-        nome = new javax.swing.JTextField();
+        cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        identidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                identidadeActionPerformed(evt);
+            }
+        });
+
+        try {
+            cpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        cpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cpfActionPerformed(evt);
+            }
+        });
+
         jLabel1.setText("Nome");
 
+        try {
+            dataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        dataNasc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dataNascActionPerformed(evt);
+            }
+        });
+
+        salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/sim.jpg"))); // NOI18N
         salvar.setText("Salvar");
         salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,9 +128,23 @@ public class TelaAlterarCliente extends javax.swing.JFrame {
             }
         });
 
+        try {
+            telefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         jLabel2.setText("CPF");
 
+        jLabel7.setText("RG");
+
         jLabel3.setText("Data nasc.");
+
+        nome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomeActionPerformed(evt);
+            }
+        });
 
         email.setToolTipText("Digite o email do cliente");
         email.addActionListener(new java.awt.event.ActionListener() {
@@ -119,45 +165,11 @@ public class TelaAlterarCliente extends javax.swing.JFrame {
 
         jLabel6.setText("Telefone");
 
-        identidade.addActionListener(new java.awt.event.ActionListener() {
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/nao.png"))); // NOI18N
+        cancelar.setText("Cancelar");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                identidadeActionPerformed(evt);
-            }
-        });
-
-        try {
-            cpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        cpf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cpfActionPerformed(evt);
-            }
-        });
-
-        try {
-            dataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        dataNasc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dataNascActionPerformed(evt);
-            }
-        });
-
-        try {
-            telefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        jLabel7.setText("RG");
-
-        nome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeActionPerformed(evt);
+                cancelarActionPerformed(evt);
             }
         });
 
@@ -165,17 +177,9 @@ public class TelaAlterarCliente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(salvar)
-                .addGap(36, 36, 36))
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(27, 27, 27)
-                        .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -189,14 +193,20 @@ public class TelaAlterarCliente extends javax.swing.JFrame {
                             .addComponent(dataNasc)
                             .addComponent(nome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(cancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6))
                         .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(endereco, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
-                            .addComponent(telefone))))
-                .addContainerGap(77, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(email, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(endereco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(telefone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,56 +236,50 @@ public class TelaAlterarCliente extends javax.swing.JFrame {
                     .addComponent(endereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(salvar)
-                .addGap(31, 31, 31))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(salvar)
+                    .addComponent(cancelar))
+                .addGap(20, 20, 20))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarActionPerformed
-        
+
         try {
-            // Conecta com o banco
-//            Statement st = MySQLConnector.conn.createStatement();
-//            String sql = "select * from status";
-//            ResultSet rs = st.executeQuery(sql);
-//            while(rs.next()) {
-//                System.out.println(rs.getString("status"));
-//            }
 
             String data = this.dataNasc.getText();
             SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
             java.util.Date dataTeste;
-            dataTeste = formatador.parse(data);                
-            
+            dataTeste = formatador.parse(data);
+
             String insertTableSQL = "UPDATE cliente "
-                    + "SET cpf = '"+this.cpf.getText()+"', "
-                    + "identidade = '"+this.identidade.getText()+"', "
-                    + "nomeCliente = '"+this.nome.getText()+"', "
-                    + "dataNascimento = '"+new java.sql.Date(dataTeste.getTime())+"', "
-                    + "emailCliente = '"+this.email.getText()+"', "
-                    + "enderecoCliente = '"+this.endereco.getText()+"', "
-                    + "telefoneCliente = '"+this.telefone.getText()+"' "
-                    + "WHERE idCliente = "+this.idCliente;   
+                    + "SET cpf = '" + this.cpf.getText() + "', "
+                    + "identidade = '" + this.identidade.getText() + "', "
+                    + "nomeCliente = '" + this.nome.getText() + "', "
+                    + "dataNascimento = '" + new java.sql.Date(dataTeste.getTime()) + "', "
+                    + "emailCliente = '" + this.email.getText() + "', "
+                    + "enderecoCliente = '" + this.endereco.getText() + "', "
+                    + "telefoneCliente = '" + this.telefone.getText() + "' "
+                    + "WHERE idCliente = " + this.cliente.getIdCliente();
+            
             Statement preparedStatement = MySQLConnector.conn.prepareStatement(insertTableSQL);
-           /* preparedStatement.setString(1, this.cpf.getText());
-            preparedStatement.setString(2, this.identidade.getText());
-            preparedStatement.setString(3, this.nome.getText());
-            preparedStatement.setDate(4, new java.sql.Date(dataTeste.getTime()));
-            preparedStatement.setString(5, this.email.getText());
-            preparedStatement.setString(6, this.endereco.getText());
-            preparedStatement.setString(7, this.telefone.getText());
-            preparedStatement.setString(8, this.idCliente);*/
-            preparedStatement.executeUpdate(insertTableSQL);
+            
+            int result = preparedStatement.executeUpdate(insertTableSQL);
+            
+            if(result > 0) {
+                JOptionPane.showMessageDialog(this, "Cliente atualizado com sucesso!");
+            }
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         this.dispose();
     }//GEN-LAST:event_salvarActionPerformed
 
@@ -302,6 +306,10 @@ public class TelaAlterarCliente extends javax.swing.JFrame {
     private void nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeActionPerformed
+
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_cancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -333,13 +341,14 @@ public class TelaAlterarCliente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
-               // new TelaAlterarCliente(String nome).setVisible(true);
+
+                // new TelaAlterarCliente(String nome).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelar;
     private javax.swing.JFormattedTextField cpf;
     private javax.swing.JFormattedTextField dataNasc;
     private javax.swing.JTextField email;

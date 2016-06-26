@@ -37,11 +37,12 @@ public class Cliente extends Pessoa {
         this.telefoneCliente = telefoneCliente;
     }
 
-    public static Cliente getClienteByNome(String nome) {
+    public static Cliente getClienteByNomeOuCpf(String nomeOuCpf) {
 
         try {
 
-            String buscaCliente = "SELECT * FROM cliente where nomeCliente = \"" + nome + "\"";
+            String buscaCliente = "SELECT * FROM cliente where nomeCliente = \"" + 
+                    nomeOuCpf + "\" OR cpf =\"" + nomeOuCpf + "\"";
             Statement st = MySQLConnector.conn.createStatement();
             ResultSet rs = st.executeQuery(buscaCliente);
 
