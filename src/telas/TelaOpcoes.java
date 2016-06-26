@@ -1,6 +1,7 @@
 
 package telas;
 
+import codigos.Cliente;
 import com.MySQLConnector.MySQLConnector;
 import com.MySQLConnector.MySQLConnector;
 import java.awt.event.WindowEvent;
@@ -207,21 +208,16 @@ public class TelaOpcoes extends javax.swing.JFrame {
             nomeCliente = JOptionPane.showInputDialog("Digite o nome do cliente para alterar");
         }
         
-        try {
-                       
-            String buscaCliente = "SELECT * FROM cliente where nomeCliente = \"" + nomeCliente + "\"";
-            Statement st = MySQLConnector.conn.createStatement();
-            ResultSet rs = st.executeQuery(buscaCliente);
-         
-            if(rs.next() == false) {
-                    JOptionPane.showMessageDialog(this, "Cliente não encontrado");
-                    return;
-                }else{
-                    new TelaAlterarCliente(rs).setVisible(true);
-                    }
-        } catch (Exception e) {
-            e.printStackTrace();
+        Cliente cliente = Cliente.getClienteByNome(nomeCliente);
+        
+            
+        // Verifica se o cliente foi encontrado no banco.
+        if(cliente == null) {
+            JOptionPane.showMessageDialog(this, "Cliente não encontrado");
+            return;
         }
+
+        new TelaAlterarCliente(cliente).setVisible(true);
 
         
     }//GEN-LAST:event_alterarDadosClienteActionPerformed

@@ -5,12 +5,16 @@
  */
 package telas;
 
+import codigos.Cliente;
 import com.MySQLConnector.MySQLConnector;
 import java.awt.event.WindowEvent;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,26 +28,34 @@ public class TelaAlterarCliente extends javax.swing.JFrame {
      * @param nome
      */
     String idCliente;
-    public TelaAlterarCliente(java.sql.ResultSet rs) {
+    public TelaAlterarCliente(Cliente cliente) {
         
-        initComponents();
-        try{            
-                    String nascimento = rs.getString(5);
-                    SimpleDateFormat in= new SimpleDateFormat("yyyy-MM-dd");
-                    SimpleDateFormat out = new SimpleDateFormat("dd/MM/yyyy");
-                    String result = out.format(in.parse(nascimento.toString())); 
-                    this.idCliente = rs.getString(1);                    
-                    this.nome.setText(rs.getString(4));
-                    this.identidade.setText(rs.getString(3));
-                    this.cpf.setText(rs.getString(2));
-                    this.dataNasc.setText(result);
-                    this.email.setText(rs.getString(6));
-                    this.endereco.setText(rs.getString(7));
-                    this.telefone.setText(rs.getString(8));
-                
-        }catch (Exception e) {
-            e.printStackTrace();
+        try {
+            initComponents();
+            
+            setLocationRelativeTo(null);
+            
+            this.nome.setText(cliente.getNomeCliente());
+            this.email.setText(cliente.getEmailCliente());
+            this.endereco.setText(cliente.getEnderecoCliente());
+            this.cpf.setText(cliente.getCpf());
+            this.identidade.setText(cliente.getIdentidade());
+            this.telefone.setText(cliente.getTelefoneCliente());
+            
+            String nascimento = cliente.getDataNascimento().toString();
+            SimpleDateFormat in= new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat out = new SimpleDateFormat("dd/MM/yyyy");
+            String result = out.format(in.parse(nascimento.toString()));
+            
+            this.dataNasc.setText(result);
+                    
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(TelaAlterarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
+                    
+                
+        
          
 
     }
