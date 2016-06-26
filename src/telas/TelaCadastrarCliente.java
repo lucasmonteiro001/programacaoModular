@@ -27,6 +27,9 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
     public TelaCadastrarCliente() {
         
         initComponents();
+        
+        setTitle("Cadastrar novo cliente");
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -209,13 +212,6 @@ public class TelaCadastrarCliente extends javax.swing.JFrame {
     private void salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarActionPerformed
         
         try {
-            // Conecta com o banco
-//            Statement st = MySQLConnector.conn.createStatement();
-//            String sql = "select * from status";
-//            ResultSet rs = st.executeQuery(sql);
-//            while(rs.next()) {
-//                System.out.println(rs.getString("status"));
-//            }
 
             String data = this.dataNasc.getText();
             SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
