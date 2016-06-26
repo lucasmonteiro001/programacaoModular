@@ -34,6 +34,7 @@ public class TelaOrcamento extends javax.swing.JFrame {
      */
     public TelaOrcamento() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

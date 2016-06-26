@@ -6,18 +6,31 @@ import java.util.Date;
 public class Orcamento {
     
     private static int numeroOS;
-    
+    private static double valMaoDeObra;
+    private static double valorISS;
+    private static double valorTotal;
     
     private String descricaoOrcamento;
     private Object matriculaProfissional;
     private Date numHorasTrabalho;
     private double valorHoraTrabalho;
     //  private Map<String, double> materialUsado;
-    private double valorISS;
+    
     private double valorTotalServico;
     private LocalDateTime prazoOrcamento;
     private boolean autorizaServico;
 
+    public static double CalcularOrcamento(int numHoras, double valHora, 
+            double valMateriais){
+        valorTotal = 0.00;
+        valMaoDeObra = (double)numHoras * valHora;
+        valorISS = valMaoDeObra * 0.05;
+        valorTotal = valMaoDeObra + valorISS + valMateriais;
+        return valorTotal;
+    }
+    
+    
+    
     public void incluirOrcamento() {
         // TODO - implement Orcamento.incluirOrcamento
         throw new UnsupportedOperationException();
@@ -46,6 +59,12 @@ public class Orcamento {
         Orcamento.numeroOS = numOS;
     }
 
+    public static double getValorISS() {
+        return valorISS;
+    }
     
+    public static double getValMaoDeObra() {
+        return valMaoDeObra;
+    }
     
 }
