@@ -56,7 +56,7 @@
                               </Group>
                               <Component id="textAndamentoServico" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="labelMaterialNecessario" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="buttonSelecionarMaterial" min="-2" max="-2" attributes="0"/>
@@ -65,7 +65,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="buttonCancelaOrcamento" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jScrollPane1" alignment="0" min="-2" pref="351" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane1" alignment="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="6" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
@@ -338,6 +338,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
+            <Property name="text" type="java.lang.String" value="Nome do Tecnico"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labelCliente">
@@ -694,7 +695,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icons/selectItens.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Seleciona Materiais"/>
+            <Property name="text" type="java.lang.String" value="Selecionar Materiais"/>
             <Property name="toolTipText" type="java.lang.String" value="Selecionar os materiais a serem usados no servico"/>
           </Properties>
         </Component>

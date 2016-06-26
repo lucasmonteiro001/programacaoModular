@@ -113,6 +113,7 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
         labelNumMatrTecnico.setForeground(new java.awt.Color(0, 0, 153));
 
         labelNomeTencnico.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        labelNomeTencnico.setText("Nome do Tecnico");
 
         labelCliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         labelCliente.setText("Cliente:");
@@ -308,7 +309,7 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
 
         buttonSelecionarMaterial.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         buttonSelecionarMaterial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/selectItens.png"))); // NOI18N
-        buttonSelecionarMaterial.setText("Seleciona Materiais");
+        buttonSelecionarMaterial.setText("Selecionar Materiais");
         buttonSelecionarMaterial.setToolTipText("Selecionar os materiais a serem usados no servico");
 
         javax.swing.GroupLayout jPanelElaborarOrcamentoLayout = new javax.swing.GroupLayout(jPanelElaborarOrcamento);
@@ -326,7 +327,7 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
                                 .addComponent(buttonRecuperaInfoOS))
                             .addComponent(textAndamentoServico, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
-                                .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(labelMaterialNecessario)
                                     .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
                                         .addComponent(buttonSelecionarMaterial)
@@ -334,7 +335,7 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
                                         .addComponent(buttonGravarOrcamento)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(buttonCancelaOrcamento))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
                                 .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
