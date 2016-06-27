@@ -8,10 +8,14 @@ package telas;
 import java.text.DecimalFormat;
 import codigos.Orcamento;
 import com.MySQLConnector.MySQLConnector;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -27,7 +31,10 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
      * Declaracao de atributos
      */
     String numeroCPF, nomeCliente, telCliente, nomeTecnico, descricaoServico;
-    int matriculaTecnico;
+    String validadeOrcamento;
+    int matriculaTecnico, idTecnico, idCliente, numHoras, idOrcamento;
+    double valHora, valMateriais, valorTotal;
+    Date dataValOrcamento;
     
     /**
      * Creates new form TelaElaborarOrcamento
@@ -140,7 +147,7 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
         });
 
         textAndamentoServico.setName(""); // NOI18N
-        textAndamentoServico.setText("Descreva aqui o orcamento e seu andamento");
+        textAndamentoServico.setText("Descreva aqui o orcamento, custos orçados e seu andamento");
 
         labelDescricaoOrcamento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         labelDescricaoOrcamento.setText("Descricao do Orcamento e Andamento do Servico");
@@ -276,6 +283,11 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
         buttonGravarOrcamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/sim.png"))); // NOI18N
         buttonGravarOrcamento.setText("Gravar");
         buttonGravarOrcamento.setToolTipText("Efetua a gravacao do Orcamento e abre tela para consulta");
+        buttonGravarOrcamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGravarOrcamentoActionPerformed(evt);
+            }
+        });
 
         buttonCancelaOrcamento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         buttonCancelaOrcamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/nao.png"))); // NOI18N
@@ -395,7 +407,8 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
                             .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
                                 .addComponent(labelOS)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelNumOS, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(labelNumOS)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
@@ -554,9 +567,8 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
 
     private void buttonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCalcularActionPerformed
         // TODO add your handling code here:
-        double valHora, valMateriais, valorTotal;
+        
         String stValorTotal, stISSQN, stValorMaoDeObra;
-        int numHoras;
         DecimalFormat df = new DecimalFormat("#,##0.00");
         
         numHoras = Integer.parseInt(textHorasNecessarias.getText());
@@ -585,9 +597,9 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
     private void buttonRecuperaInfoOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRecuperaInfoOSActionPerformed
 
         try {
-            String executeQuerySQL = ("SELECT cliente.cpf, cliente.nomeCliente, "
-                + "cliente.telefoneCliente, tecnico.nomeTecnico, "
-                + "tecnico.matriculaTecnico, ordemservico.descricaoServico "
+            String executeQuerySQL = ("SELECT cliente.idCliente, cliente.cpf, "
+                + "cliente.nomeCliente, cliente.telefoneCliente, tecnico.nomeTecnico, "
+                + "tecnico.matriculaTecnico, tecnico.idTecnico, ordemservico.descricaoServico "
                 + "FROM ordemservico inner join cliente inner join tecnico WHERE "
                 + "ordemservico.idOS = " + String.valueOf(Orcamento.getNumeroOS())
                 + " and ordemservico.idCliente = cliente.idCliente and "
@@ -604,6 +616,8 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
                 nomeTecnico = resultado.getString("tecnico.nomeTecnico");
                 matriculaTecnico = resultado.getInt("tecnico.matriculaTecnico");
                 descricaoServico = resultado.getString("ordemservico.descricaoServico");
+                idTecnico = resultado.getInt("tecnico.idTecnico");
+                idCliente = resultado.getInt("cliente.idCliente");
             }
             /* long strToLong = Long.parseLong(telCliente);
             
@@ -624,6 +638,62 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
         }
                 
     }//GEN-LAST:event_buttonRecuperaInfoOSActionPerformed
+
+    private void buttonGravarOrcamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGravarOrcamentoActionPerformed
+        try {
+            String insertTableSQL = "INSERT INTO orcamento"
+                    + "(idOS, idTecnico, idCliente, descricaoOrcamento, numHoras,"
+                    + " valorHora, valorServico) VALUES"
+                    + "(?,?,?,?,?,?,?)";
+            PreparedStatement stmt = MySQLConnector.conn.prepareStatement(insertTableSQL);
+            stmt.setInt(1, Integer.parseInt(this.labelNumOS.getText()));
+            stmt.setInt(2, this.idTecnico);
+            stmt.setInt(3, this.idCliente);
+            stmt.setString(4, this.textAndamentoServico.getText());
+            stmt.setInt(5, Integer.parseInt(this.textHorasNecessarias.getText()));
+            stmt.setDouble(6, this.valHora);
+            stmt.setDouble(7, this.valorTotal);
+            
+            stmt.executeUpdate();
+            
+            String validadeOrcamento = comboBoxDias.getSelectedItem().toString();
+            
+            String executeQuerySQL = ("SELECT orcamento.idOrcamento "
+                    + "DATE_ADD(orcamento.prazoOrcamento, INTERVAL " + validadeOrcamento 
+                    + " DAY) AS prazoOrcamento FROM orcamento WHERE idOS =  " 
+                    + String.valueOf(Orcamento.getNumeroOS()));
+            
+            stmt = MySQLConnector.conn.prepareStatement(executeQuerySQL);
+            ResultSet resultado = stmt.executeQuery(executeQuerySQL);
+            
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+            
+            while (resultado.next()) {
+                validadeOrcamento = resultado.getString("orcamento.prazoOrcamento");
+                dataValOrcamento = (Date)formatter.parse(validadeOrcamento);
+                idOrcamento = resultado.getInt("orcamento.idOrcamento");   
+            }
+            
+            String mensagem = "Anote o numero do orcamento gerado: " 
+                    + String.valueOf(idOrcamento);
+            JOptionPane.showMessageDialog(null, mensagem);
+            
+            String updateTableSQL = ("UPDATE orcamento SET orcamento.prazoOrcamento "
+                    + "= ? where idOS = " + String.valueOf(Orcamento.getNumeroOS()));
+            stmt = MySQLConnector.conn.prepareStatement(updateTableSQL);
+            stmt.setDate(1, new java.sql.Date(dataValOrcamento.getTime()));
+            
+            
+            
+            //preparedStatement.setDate(8, this.comboBoxDias.getActionCommand());
+            
+            // preparedStatement.executeUpdate();
+            
+        
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_buttonGravarOrcamentoActionPerformed
 
     /**
      * @param args the command line arguments

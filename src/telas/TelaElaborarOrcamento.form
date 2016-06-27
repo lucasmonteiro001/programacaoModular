@@ -144,7 +144,8 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="labelOS" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="labelNumOS" min="-2" pref="68" max="-2" attributes="0"/>
+                                  <Component id="labelNumOS" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
@@ -403,7 +404,7 @@
         <Component class="java.awt.TextArea" name="textAndamentoServico">
           <Properties>
             <Property name="name" type="java.lang.String" value="" noResource="true"/>
-            <Property name="text" type="java.lang.String" value="Descreva aqui o orcamento e seu andamento"/>
+            <Property name="text" type="java.lang.String" value="Descreva aqui o orcamento, custos or&#xe7;ados e seu andamento"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labelDescricaoOrcamento">
@@ -641,6 +642,9 @@
             <Property name="text" type="java.lang.String" value="Gravar"/>
             <Property name="toolTipText" type="java.lang.String" value="Efetua a gravacao do Orcamento e abre tela para consulta"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonGravarOrcamentoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="buttonCancelaOrcamento">
           <Properties>
