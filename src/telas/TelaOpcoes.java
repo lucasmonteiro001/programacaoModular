@@ -31,6 +31,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+        alterarTecnico = new javax.swing.JMenuItem();
         excluirTecnico = new javax.swing.JMenuItem();
         cadastrarNovaHabilidade = new javax.swing.JMenuItem();
         menuOS = new javax.swing.JMenu();
@@ -99,6 +100,14 @@ public class TelaOpcoes extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem3);
+
+        alterarTecnico.setText("Alterar Técnico");
+        alterarTecnico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alterarTecnicoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(alterarTecnico);
 
         excluirTecnico.setText("Excluir Técnico");
         excluirTecnico.addActionListener(new java.awt.event.ActionListener() {
@@ -323,6 +332,24 @@ public class TelaOpcoes extends javax.swing.JFrame {
         tecnico.excluirTecnico(tecnico);
     }//GEN-LAST:event_excluirTecnicoActionPerformed
 
+    private void alterarTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarTecnicoActionPerformed
+        String nomeTecnico = JOptionPane.showInputDialog("Digite o nome ou matricula do técnico para alterar");
+        
+        while(nomeTecnico.equals("")) {
+            nomeTecnico = JOptionPane.showInputDialog("Digite o nome ou matricula do tecnico para alterar");
+        }
+        
+        Profissional tecnico = Profissional.getTecnicoByNomeOuMatricula(nomeTecnico);        
+            
+        // Verifica se o cliente foi encontrado no banco.
+        if(tecnico == null) {
+            JOptionPane.showMessageDialog(this, "Técnico não encontrado");
+            return;
+        }
+
+        new TelaAlterarTecnico(tecnico).setVisible(true);
+    }//GEN-LAST:event_alterarTecnicoActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -356,6 +383,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem alterarDadosCliente;
+    private javax.swing.JMenuItem alterarTecnico;
     private javax.swing.JMenuItem cadastrarNovaHabilidade;
     private javax.swing.JMenuItem excluirTecnico;
     private javax.swing.JLabel jLabel1;

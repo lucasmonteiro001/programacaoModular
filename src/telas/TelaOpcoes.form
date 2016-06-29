@@ -54,6 +54,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem3ActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="alterarTecnico">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Alterar T&#xe9;cnico"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alterarTecnicoActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="excluirTecnico">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Excluir T&#xe9;cnico"/>
