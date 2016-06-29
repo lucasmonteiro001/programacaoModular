@@ -27,6 +27,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
         menuCliente = new javax.swing.JMenu();
         menuCadastrarCliente = new javax.swing.JMenuItem();
         alterarDadosCliente = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         cadastrarNovaHabilidade = new javax.swing.JMenuItem();
@@ -76,6 +77,14 @@ public class TelaOpcoes extends javax.swing.JFrame {
             }
         });
         menuCliente.add(alterarDadosCliente);
+
+        jMenuItem5.setText("Excluir Cliente");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        menuCliente.add(jMenuItem5);
 
         menuBar.add(menuCliente);
 
@@ -268,6 +277,25 @@ public class TelaOpcoes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        
+        String nomeCliente = JOptionPane.showInputDialog("Digite o nome ou cpf do cliente para alterar");
+        
+        while(nomeCliente.equals("")) {
+            nomeCliente = JOptionPane.showInputDialog("Digite o nome ou cpf do cliente para excluir");
+        }
+        
+        Cliente cliente = Cliente.getClienteByNomeOuCpf(nomeCliente);  
+        
+        cliente.excluirCliente(cliente);
+        
+        // Verifica se o cliente foi encontrado no banco.
+        if(cliente == null) {
+            JOptionPane.showMessageDialog(this, "Cliente não encontrado");
+        }
+
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -309,6 +337,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuCadastrarCliente;
     private javax.swing.JMenu menuCliente;
