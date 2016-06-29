@@ -51,7 +51,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 153));
-        jLabel2.setText("Emperesa Faz Consertos");
+        jLabel2.setText("Empresa Faz Consertos");
 
         menuCliente.setText("Cliente");
         menuCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +178,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addComponent(jLabel2)))
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,7 +235,6 @@ public class TelaOpcoes extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         new TelaGridTecnico().setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void menuVisualizaOrcamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVisualizaOrcamentoActionPerformed
