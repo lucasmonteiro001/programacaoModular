@@ -62,6 +62,21 @@ public class Cliente extends Pessoa {
 
         return null;
     }
+    
+    public void excluirCliente(Cliente cliente){
+        
+        try {
+            String deletaCliente = "DELETE FROM cliente where nomeCliente = \"" + 
+                    cliente.nomeCliente + "\" OR cpf =\"" + cliente.cpf + "\"";
+            Statement st = MySQLConnector.conn.createStatement();
+            st.executeUpdate(deletaCliente);
+            JOptionPane.showMessageDialog(null, "Cliente excluido com sucesso!");            
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Este cliente já está associado com outros registros no sistema"
+                    + " e por isso não pode ser excluido.");
+        }
+    }
 
     public Integer getIdCliente() {
         return idCliente;
