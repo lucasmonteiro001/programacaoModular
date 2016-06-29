@@ -63,6 +63,46 @@ public class Profissional extends Pessoa {
                     + " e por isso não pode ser excluido.");
         }
     }
+    
+    public Integer getIdTecnico() {
+        return idTecnico;
+    }
+    
+    public void setIdCliente(Integer idTecnico) {
+        this.idTecnico = idTecnico;
+    }
+
+    public Integer getMatricula() {
+        return nrMatricula;
+    }
+
+    public void setMatricula(Integer matricula) {
+        this.nrMatricula = matricula;
+    }
+
+    public String getNomeTecnico() {
+        return nomeTecnico;
+    }
+
+    public void setNomeTecnico(String nomeTecnico) {
+        this.nomeTecnico = nomeTecnico;
+    }
+
+    public String getEmailTecnico() {
+        return emailTecnico;
+    }
+
+    public void setEmailTecnico(String emailTecnico) {
+        this.emailTecnico = emailTecnico;
+    }
+
+    public String getTelefoneTecnico() {
+        return telefoneTecnico;
+    }
+
+    public void setTelefoneTecnico(String telefoneTecnico) {
+        this.telefoneTecnico = telefoneTecnico;
+    }
 
 }
 
