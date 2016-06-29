@@ -2,6 +2,7 @@
 package telas;
 
 import codigos.Cliente;
+import codigos.Profissional;
 import com.MySQLConnector.MySQLConnector;
 import com.MySQLConnector.MySQLConnector;
 import java.awt.event.WindowEvent;
@@ -30,6 +31,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+        excluirTecnico = new javax.swing.JMenuItem();
         cadastrarNovaHabilidade = new javax.swing.JMenuItem();
         menuOS = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -97,6 +99,14 @@ public class TelaOpcoes extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem3);
+
+        excluirTecnico.setText("Excluir Técnico");
+        excluirTecnico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirTecnicoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(excluirTecnico);
 
         cadastrarNovaHabilidade.setText("Cadastrar Nova Habilidade");
         cadastrarNovaHabilidade.addActionListener(new java.awt.event.ActionListener() {
@@ -279,22 +289,39 @@ public class TelaOpcoes extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         
-        String nomeCliente = JOptionPane.showInputDialog("Digite o nome ou cpf do cliente para alterar");
+        String nomeCliente = JOptionPane.showInputDialog("Digite o nome ou cpf do cliente para excluir");
         
         while(nomeCliente.equals("")) {
             nomeCliente = JOptionPane.showInputDialog("Digite o nome ou cpf do cliente para excluir");
         }
         
-        Cliente cliente = Cliente.getClienteByNomeOuCpf(nomeCliente);  
-        
-        cliente.excluirCliente(cliente);
-        
+        Cliente cliente = Cliente.getClienteByNomeOuCpf(nomeCliente);       
+               
         // Verifica se o cliente foi encontrado no banco.
         if(cliente == null) {
             JOptionPane.showMessageDialog(this, "Cliente não encontrado");
         }
+        
+        cliente.excluirCliente(cliente);
 
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void excluirTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirTecnicoActionPerformed
+        String nomeTecnico = JOptionPane.showInputDialog("Digite o nome ou matricula do técnico para excluir");
+        
+        while(nomeTecnico.equals("")) {
+            nomeTecnico = JOptionPane.showInputDialog("Digite o nome ou matrícula do técnico para excluir");
+        }
+        
+        Profissional tecnico = Profissional.getTecnicoByNomeOuMatricula(nomeTecnico);       
+               
+        // Verifica se o cliente foi encontrado no banco.
+        if(tecnico == null) {
+            JOptionPane.showMessageDialog(this, "Tecnico não encontrado");
+        }
+        
+        tecnico.excluirTecnico(tecnico);
+    }//GEN-LAST:event_excluirTecnicoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -330,6 +357,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem alterarDadosCliente;
     private javax.swing.JMenuItem cadastrarNovaHabilidade;
+    private javax.swing.JMenuItem excluirTecnico;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
