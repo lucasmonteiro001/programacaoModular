@@ -8,7 +8,11 @@ package telas;
 import com.MySQLConnector.MySQLConnector;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseAdapter;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 /**
  *
  * @author Luisa
@@ -79,6 +83,11 @@ public class TelaGridTecnico extends javax.swing.JFrame {
                 "Número da OS", "Data OS", "Status da OS", "Nome do Cliente", "Habilidade Desejada"
             }
         ));
+        tabelaOSsemTecnico.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaOSsemTecnicoMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabelaOSsemTecnico);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -136,6 +145,17 @@ public class TelaGridTecnico extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_matriculaTecnicoActionPerformed
 
+    /*tabelaOSsemTecnico.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+            if (e.getClickCount() == 2 ){ 
+               JTable target = (JTable)e.getSource();
+                int row = target.getSelectedRow();
+                int column = target.getSelectedColumn();
+            }
+        }
+    });*/
+
+
     private void buscarOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarOSActionPerformed
         try{
             Integer idTecnico = 0;
@@ -191,7 +211,7 @@ public class TelaGridTecnico extends javax.swing.JFrame {
             
             String selectTableSQLOSsemTecnico = "Select idOS, idTecnico, idCliente, idHabilidade,"
                     + " idStatus, dataOS from ordemservico where idHabilidade = " + "(?)" +
-                    "and idTecnico is null limit 4";
+                    "and idTecnico is null order by dataOS limit 4";
             PreparedStatement preparedStatementstecnico = MySQLConnector.conn.prepareStatement(selectTableSQLOSsemTecnico);
             preparedStatementstecnico.setInt(1, idHabilidade);
             ResultSet rsOSsTecnico = preparedStatementstecnico.executeQuery(); 
@@ -234,6 +254,47 @@ public class TelaGridTecnico extends javax.swing.JFrame {
         
     }//GEN-LAST:event_buscarOSActionPerformed
 
+    private void tabelaOSsemTecnicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaOSsemTecnicoMouseClicked
+        JTable target = (JTable)evt.getSource();
+        int idOS = (Integer)this.tabelaOSsemTecnico.getValueAt(target.getSelectedRow(), 0);
+        //verifica se o tecnico já nao esta atendendo duas OS's
+        int idTec = 0, nrOS = 0;
+        try{
+            String idTecnico = "Select idTecnico from tecnico where matriculaTecnico = " + "(?)";
+            PreparedStatement preparedStatementstecnico = MySQLConnector.conn.prepareStatement(idTecnico);
+            preparedStatementstecnico.setString(1, this.matriculaTecnico.getText());
+            ResultSet rsIDTecnico = preparedStatementstecnico.executeQuery();
+            
+            if (rsIDTecnico.next())
+               idTec  = rsIDTecnico.getInt("idTecnico");
+            
+            String nrOSTecnico = "Select * from ordemservico where idTecnico = " + "(?)";
+            PreparedStatement preparedStatementsnrOS = MySQLConnector.conn.prepareStatement(nrOSTecnico);
+            preparedStatementsnrOS.setInt(1, idTec);
+            ResultSet rsnrOSTecnico = preparedStatementsnrOS.executeQuery();
+            
+            if (rsnrOSTecnico.last())
+               nrOS  = rsnrOSTecnico.getRow();
+            
+            if (nrOS>=2){
+                JOptionPane.showMessageDialog(this, "Este profissional já está atendendo o número limite de Ordens de Serviço");
+                return;
+            }
+            
+            //colocando o tecnico como tecnico da OS especificamente
+            String setTecnico = "update ordemservico set idTecnico =" + idTec + " where idOS =" + idOS;
+            PreparedStatement preparedStatementsetTecnico = MySQLConnector.conn.prepareStatement(setTecnico);
+            int result = preparedStatementsetTecnico.executeUpdate(setTecnico);           
+            new TelaOrcamento(idOS).setVisible(true);
+            this.dispose();     
+            
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+             
+    }//GEN-LAST:event_tabelaOSsemTecnicoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -267,7 +328,8 @@ public class TelaGridTecnico extends javax.swing.JFrame {
                 new TelaGridTecnico().setVisible(true);
             }
         });
-    }
+    }   
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscarOS;
@@ -278,6 +340,6 @@ public class TelaGridTecnico extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField matriculaTecnico;
     private javax.swing.JTable tabelaOSTecnico;
-    private javax.swing.JTable tabelaOSsemTecnico;
+    public javax.swing.JTable tabelaOSsemTecnico;
     // End of variables declaration//GEN-END:variables
 }

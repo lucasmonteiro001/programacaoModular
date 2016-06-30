@@ -32,8 +32,12 @@ public class TelaOrcamento extends javax.swing.JFrame {
     /**
      * Creates new form TelaOrcamento
      */
-    public TelaOrcamento() {
-        initComponents();
+    public TelaOrcamento(int numOS) {
+        initComponents();        
+        if (numOS==0)
+            this.textNumOS.setText("");
+        else
+            this.textNumOS.setText(Integer.toString(numOS));
         setLocationRelativeTo(null);
     }
 
@@ -264,7 +268,7 @@ public class TelaOrcamento extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaOrcamento().setVisible(true);
+                new TelaOrcamento(0).setVisible(true);
             }
         });
     }

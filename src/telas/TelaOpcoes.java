@@ -266,7 +266,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void menuVisualizaOrcamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVisualizaOrcamentoActionPerformed
-        new TelaOrcamento().setVisible(true);
+        new TelaOrcamento(0).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_menuVisualizaOrcamentoActionPerformed
 
