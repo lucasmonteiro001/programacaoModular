@@ -29,6 +29,10 @@ public class TelaGridTecnico extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         matriculaTecnico = new javax.swing.JTextField();
         buscarOS = new javax.swing.JButton();
@@ -38,6 +42,35 @@ public class TelaGridTecnico extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelaOSsemTecnico = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        ServicoRealizado = new javax.swing.JTable();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable1);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(jTable2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -90,33 +123,59 @@ public class TelaGridTecnico extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tabelaOSsemTecnico);
 
+        jLabel4.setText("Ordens Aprovadas - Clique na OS para indicar que o serviço já foi realizado");
+
+        ServicoRealizado.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Número da OS", "Descrição do Serviço", "Valor do Serviço"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        ServicoRealizado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ServicoRealizadoMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(ServicoRealizado);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(matriculaTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(buscarOS)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(matriculaTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(buscarOS))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,10 +183,9 @@ public class TelaGridTecnico extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(matriculaTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buscarOS)
-                .addGap(14, 14, 14)
+                    .addComponent(matriculaTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarOS))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -135,7 +193,11 @@ public class TelaGridTecnico extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -144,17 +206,6 @@ public class TelaGridTecnico extends javax.swing.JFrame {
     private void matriculaTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matriculaTecnicoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_matriculaTecnicoActionPerformed
-
-    /*tabelaOSsemTecnico.addMouseListener(new MouseAdapter() {
-        public void mouseClicked(MouseEvent e) {
-            if (e.getClickCount() == 2 ){ 
-               JTable target = (JTable)e.getSource();
-                int row = target.getSelectedRow();
-                int column = target.getSelectedColumn();
-            }
-        }
-    });*/
-
 
     private void buscarOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarOSActionPerformed
         try{
@@ -245,6 +296,20 @@ public class TelaGridTecnico extends javax.swing.JFrame {
                 row++;
             }
             
+            String selectTableSQLOSAceite = "Select idOS, descricaoOrcamento,valorServico "
+                    + "from orcamento where idTecnico = " + idTecnico + " and idStatus = 4 order by 1 limit 4";
+            PreparedStatement preparedStatementAceite = MySQLConnector.conn.prepareStatement(selectTableSQLOSAceite);
+            ResultSet rsOSAceite = preparedStatementAceite.executeQuery();
+            
+            row = 0;
+            //populando tabela
+            while(rsOSAceite.next()){                
+                this.ServicoRealizado.setValueAt(rsOSAceite.getInt("idOS"), row, 0);
+                this.ServicoRealizado.setValueAt(rsOSAceite.getString("descricaoOrcamento"), row, 1);
+                this.ServicoRealizado.setValueAt(rsOSAceite.getDouble("valorServico"), row, 2);    
+                row++;
+            }
+            
             rs.close();
 
         }
@@ -295,6 +360,31 @@ public class TelaGridTecnico extends javax.swing.JFrame {
              
     }//GEN-LAST:event_tabelaOSsemTecnicoMouseClicked
 
+    private void ServicoRealizadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ServicoRealizadoMouseClicked
+        JTable target = (JTable)evt.getSource();
+        int idOS = (Integer)this.ServicoRealizado.getValueAt(target.getSelectedRow(), 0);
+        //verifica se o tecnico já nao esta atendendo duas OS's
+        int idTec = 0, nrOS = 0;
+        try{
+            Object[] options = { "Serviço Realizado", "Serviço não Realizado" };            
+            int recusou = JOptionPane.showOptionDialog(null, "Clique na ação desejada para a OS selecionada", "Confirmar Serviço",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+            if(recusou == 1){
+                JOptionPane.showMessageDialog(this, "O serviço não foi confirmado.");
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "O serviço foi confirmado.");
+                String setStatusOrcamento = "update orcamento set idStatus = 6 where idOS =" + idOS;
+                PreparedStatement preparedStatementsetStatus = MySQLConnector.conn.prepareStatement(setStatusOrcamento);
+                preparedStatementsetStatus.executeUpdate(setStatusOrcamento); 
+            }             
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+                          
+    }//GEN-LAST:event_ServicoRealizadoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -332,12 +422,19 @@ public class TelaGridTecnico extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable ServicoRealizado;
     private javax.swing.JButton buscarOS;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField matriculaTecnico;
     private javax.swing.JTable tabelaOSTecnico;
     public javax.swing.JTable tabelaOSsemTecnico;
