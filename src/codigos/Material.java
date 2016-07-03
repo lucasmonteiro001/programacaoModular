@@ -8,6 +8,7 @@ package codigos;
 /**
  *
  * @author Iago A D Vaz
+ * objetos responsáveis por armazenar os objetos selecionados no orçamento
  */
 public class Material {
     private int idProduto;
