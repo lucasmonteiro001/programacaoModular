@@ -15,6 +15,7 @@ import javax.swing.table.AbstractTableModel;
 /**
  *
  * @author Iago A D Vaz
+ * responsável por construir a jTable de forma dinâmica
  */
 public class ModeloTabela extends AbstractTableModel{
     private ArrayList linhas = null;
@@ -46,23 +47,11 @@ public class ModeloTabela extends AbstractTableModel{
         return colunas[numCol];
     }
     
-    /*public Class getColumnClass(int column){
-         switch (column) {
-                    case 0:
-                        return String.class;
-                    case 1:
-                        return String.class;
-                    case 2:
-                        return String.class;
-                    default:
-                        return Boolean.class;
-                }
-    }*/
-    
     public Class getColumnClass(int column){
         return getValueAt(3, column).getClass();
     }
     
+    //responsável por selecionar e desselecionar o Check criado
     @Override
     public void setValueAt(Object aValue, int numLin, int numCol){
         Object[] linha = (Object[])getLinhas().get(numLin);
@@ -81,6 +70,8 @@ public class ModeloTabela extends AbstractTableModel{
         return linha[numCol];
     }
     
+    
+    //retorna um ArrayList<Material> com os materiais selecionados pelo técnico.
     public ArrayList getMateriais(){
         Object[] linha;
         ArrayList<Material> materiais = new ArrayList();
@@ -93,14 +84,6 @@ public class ModeloTabela extends AbstractTableModel{
         }
         return materiais;
     }
-    
-    /*public Object retornaLista(int numLin, int numCol){
-        Object[] linha = (Object[])getLinhas().get(numLin);
-        if (linha[3].equals(true)){
-            System.out.println(this);
-        }else{linha[3] = false;}
-        return null;
-   }*/
     
     
 }
