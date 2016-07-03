@@ -30,10 +30,10 @@ public class TelaOpcoes extends javax.swing.JFrame {
         alterarDadosCliente = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
+        cadastrarNovaHabilidade = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         alterarTecnico = new javax.swing.JMenuItem();
         excluirTecnico = new javax.swing.JMenuItem();
-        cadastrarNovaHabilidade = new javax.swing.JMenuItem();
         menuOS = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -93,6 +93,14 @@ public class TelaOpcoes extends javax.swing.JFrame {
 
         jMenu1.setText("Técnico");
 
+        cadastrarNovaHabilidade.setText("Cadastrar Nova Habilidade");
+        cadastrarNovaHabilidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarNovaHabilidadeActionPerformed(evt);
+            }
+        });
+        jMenu1.add(cadastrarNovaHabilidade);
+
         jMenuItem3.setText("Cadastrar Técnico");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,14 +124,6 @@ public class TelaOpcoes extends javax.swing.JFrame {
             }
         });
         jMenu1.add(excluirTecnico);
-
-        cadastrarNovaHabilidade.setText("Cadastrar Nova Habilidade");
-        cadastrarNovaHabilidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastrarNovaHabilidadeActionPerformed(evt);
-            }
-        });
-        jMenu1.add(cadastrarNovaHabilidade);
 
         menuBar.add(jMenu1);
 

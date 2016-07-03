@@ -32,7 +32,7 @@ public class TelaCadastrarTecnico extends javax.swing.JFrame {
             e.printStackTrace();
             }
         
-        
+        setTitle("Cadastrar Técnico");
         setLocationRelativeTo(null);
     }
 
@@ -51,7 +51,6 @@ public class TelaCadastrarTecnico extends javax.swing.JFrame {
         matricula = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
         telefone = new javax.swing.JFormattedTextField();
         habilidadeTecnico = new javax.swing.JComboBox<>();
 
@@ -104,8 +103,6 @@ public class TelaCadastrarTecnico extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("CADASTRAR NOVO TÉCNICO");
-
         telefone.setBorder(null);
         try {
             telefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
@@ -152,10 +149,6 @@ public class TelaCadastrarTecnico extends javax.swing.JFrame {
                             .addComponent(telefone)
                             .addComponent(habilidadeTecnico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(42, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {email, matricula, nome});
@@ -163,9 +156,7 @@ public class TelaCadastrarTecnico extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -183,7 +174,7 @@ public class TelaCadastrarTecnico extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(matricula, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -277,7 +268,6 @@ public class TelaCadastrarTecnico extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField matricula;
     private javax.swing.JTextField nome;
     private javax.swing.JFormattedTextField telefone;
