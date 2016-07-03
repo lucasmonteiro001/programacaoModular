@@ -48,6 +48,7 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
     public TelaElaborarOrcamento() {
         initComponents();
         setLocationRelativeTo(null);
+        //método responsável por preencher a tabela com os resultSet do banco de dados.
         preencherTabela();
     }
 
@@ -719,22 +720,16 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
 
     private void buttonSelecionarMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSelecionarMaterialActionPerformed
         // TODO add your handling code here:
-       /* ArrayList teste = modelo.retornaLista();
-        for(int i=0;i<teste.size();i++){
-            System.out.println(teste.get(i));
-        }*/
-       //ArrayList idProdutos = modelo.teste();
+        //recupera um ArrayList<Material> com os produtos e materiais selecionados pelo técnico
        materiais = modelo.getMateriais();
-       /*for(int i=0;i<materiais.size();i++){
-            System.out.println(materiais.get(i).getIdProduto()+materiais.get(i).getNomeProduto()+materiais.get(i).getPrecoProduto());
-        }
-       double soma;
-       soma = calculaMateriais(materiais);
-       System.out.println("\n\n\nSOMA: R$"+soma);*/
        
     }//GEN-LAST:event_buttonSelecionarMaterialActionPerformed
 
+        /**
+         * responsável por criar e preencher a tabela com os dados do banco.
+         */
     public void preencherTabela(){
+        
         ArrayList dados = new ArrayList();
         String [] Colunas = new String[]{"ID","Produto/Material","Preço R$",""};
         
@@ -751,8 +746,7 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Preencher o ArrayList\nERRO:"+ex);
         }
-        
-//        ModeloTabela modelo = new ModeloTabela(dados, Colunas);
+
         modelo = new ModeloTabela(dados, Colunas);
         tableMaterial.setModel(modelo);
         tableMaterial.getColumnModel().getColumn(0).setPreferredWidth(50);
@@ -770,6 +764,7 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
         
     }
     
+    //resposável por calcular o valor total dos materiais utilizados no orçamento.
     public double calculaMateriais(ArrayList<Material> materiais){
         double soma = 0;
         for(int i=0; i<materiais.size();i++){
