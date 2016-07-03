@@ -5,6 +5,8 @@
  */
 package telas;
 
+import codigos.Material;
+import codigos.ModeloTabela;
 import java.text.DecimalFormat;
 import codigos.Orcamento;
 import com.MySQLConnector.MySQLConnector;
@@ -16,9 +18,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.text.MaskFormatter;
 
 /**
@@ -35,6 +39,8 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
     int matriculaTecnico, idTecnico, idCliente, numHoras, idOrcamento;
     double valHora, valMateriais, valorTotal;
     Date dataValOrcamento;
+    ModeloTabela modelo;
+    ArrayList<Material> materiais;
     
     /**
      * Creates new form TelaElaborarOrcamento
@@ -42,6 +48,7 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
     public TelaElaborarOrcamento() {
         initComponents();
         setLocationRelativeTo(null);
+        preencherTabela();
     }
 
     /**
@@ -181,24 +188,16 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
         tableMaterial.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         tableMaterial.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {},
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Material / Peca", "Preco"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
+        ));
         jScrollPane1.setViewportView(tableMaterial);
 
         labelMaoDeObra.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -248,6 +247,7 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("R$");
 
+        textValorMaterial.setEditable(false);
         textValorMaterial.setToolTipText("Retorna o valor total dos materiais");
         textValorMaterial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -323,6 +323,11 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
         buttonSelecionarMaterial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/selectItens.png"))); // NOI18N
         buttonSelecionarMaterial.setText("Selecionar Materiais");
         buttonSelecionarMaterial.setToolTipText("Selecionar os materiais a serem usados no servico");
+        buttonSelecionarMaterial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSelecionarMaterialActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelElaborarOrcamentoLayout = new javax.swing.GroupLayout(jPanelElaborarOrcamento);
         jPanelElaborarOrcamento.setLayout(jPanelElaborarOrcamentoLayout);
@@ -471,14 +476,6 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buttonSelecionarMaterial)
-                            .addComponent(buttonGravarOrcamento)
-                            .addComponent(buttonCancelaOrcamento))
-                        .addGap(64, 64, 64))
-                    .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
@@ -506,13 +503,22 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
                             .addComponent(comboBoxDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelDias))
                         .addContainerGap(60, Short.MAX_VALUE))
-                    .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
-                        .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelValorHora)
-                            .addComponent(jLabel4)
-                            .addComponent(textValorHoraTrabalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonCalcular)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                        .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(buttonSelecionarMaterial)
+                                    .addComponent(buttonGravarOrcamento)
+                                    .addComponent(buttonCancelaOrcamento)))
+                            .addGroup(jPanelElaborarOrcamentoLayout.createSequentialGroup()
+                                .addGroup(jPanelElaborarOrcamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(labelValorHora)
+                                    .addComponent(jLabel4)
+                                    .addComponent(textValorHoraTrabalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buttonCalcular)))
                         .addContainerGap())))
         );
 
@@ -571,10 +577,11 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
         
         String stValorTotal, stISSQN, stValorMaoDeObra;
         DecimalFormat df = new DecimalFormat("#,##0.00");
+        materiais = modelo.getMateriais();
         
         numHoras = Integer.parseInt(textHorasNecessarias.getText());
         valHora = Double.parseDouble(textValorHoraTrabalho.getText());
-        valMateriais = Double.parseDouble(textValorMaterial.getText());
+        valMateriais = calculaMateriais(materiais);
         
         valorTotal = Orcamento.CalcularOrcamento(numHoras, valHora, valMateriais);
         
@@ -657,6 +664,20 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
             
             stmt.executeUpdate();
             
+            
+            insertTableSQL = "INSERT INTO produtoorcamento"
+                    + "(idProduto, idOrcamento) VALUES"
+                    + "(?,?)";
+            
+            for (int i=0; i<materiais.size(); i++){
+                stmt = MySQLConnector.conn.prepareStatement(insertTableSQL);
+                stmt.setInt(1, Integer.parseInt(this.labelNumOS.getText()));
+                stmt.setInt(2, materiais.get(i).getIdProduto());
+
+                stmt.executeUpdate();
+            }
+                
+            
             String validadeOrcamento = comboBoxDias.getSelectedItem().toString();
             
             String executeQuerySQL = ("SELECT orcamento.idOrcamento "
@@ -696,6 +717,68 @@ public class TelaElaborarOrcamento extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonGravarOrcamentoActionPerformed
 
+    private void buttonSelecionarMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSelecionarMaterialActionPerformed
+        // TODO add your handling code here:
+       /* ArrayList teste = modelo.retornaLista();
+        for(int i=0;i<teste.size();i++){
+            System.out.println(teste.get(i));
+        }*/
+       //ArrayList idProdutos = modelo.teste();
+       materiais = modelo.getMateriais();
+       /*for(int i=0;i<materiais.size();i++){
+            System.out.println(materiais.get(i).getIdProduto()+materiais.get(i).getNomeProduto()+materiais.get(i).getPrecoProduto());
+        }
+       double soma;
+       soma = calculaMateriais(materiais);
+       System.out.println("\n\n\nSOMA: R$"+soma);*/
+       
+    }//GEN-LAST:event_buttonSelecionarMaterialActionPerformed
+
+    public void preencherTabela(){
+        ArrayList dados = new ArrayList();
+        String [] Colunas = new String[]{"ID","Produto/Material","Preço R$",""};
+        
+        try {
+            String executeQuerySQL = ("SELECT * FROM produtoos ORDER BY nomeProduto");
+            PreparedStatement stmt;
+  
+            stmt = MySQLConnector.conn.prepareStatement(executeQuerySQL);
+            ResultSet resultado = stmt.executeQuery(executeQuerySQL);
+            resultado.first();
+            do{
+                dados.add(new Object[]{resultado.getInt("idProduto"),resultado.getString("nomeProduto"), resultado.getString("precoProduto"), false});                
+            } while(resultado.next());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Preencher o ArrayList\nERRO:"+ex);
+        }
+        
+//        ModeloTabela modelo = new ModeloTabela(dados, Colunas);
+        modelo = new ModeloTabela(dados, Colunas);
+        tableMaterial.setModel(modelo);
+        tableMaterial.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tableMaterial.getColumnModel().getColumn(0).setResizable(false);
+        tableMaterial.getColumnModel().getColumn(1).setPreferredWidth(180);
+        tableMaterial.getColumnModel().getColumn(1).setResizable(false);
+        tableMaterial.getColumnModel().getColumn(2).setPreferredWidth(98);
+        tableMaterial.getColumnModel().getColumn(2).setResizable(false);   
+        tableMaterial.getColumnModel().getColumn(3).setPreferredWidth(30);
+        tableMaterial.getColumnModel().getColumn(3).setResizable(false);    
+        tableMaterial.getTableHeader().setReorderingAllowed(false);
+        tableMaterial.setAutoResizeMode(tableMaterial.AUTO_RESIZE_OFF);
+        tableMaterial.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        
+        
+    }
+    
+    public double calculaMateriais(ArrayList<Material> materiais){
+        double soma = 0;
+        for(int i=0; i<materiais.size();i++){
+            soma += materiais.get(i).getPrecoProduto();
+        }
+        return soma;
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
